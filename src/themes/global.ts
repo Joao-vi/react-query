@@ -1,16 +1,19 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
+${({ theme }) => css`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        font-size: 62.5%; // 1rem === 10px
+  body {
+    font-family: "Inter", sans-serif;
+    font-size: 62.5%; // 1rem === 10px
 
-        background-color: ${({ theme }) => theme.colors.mainBgColor};
-    }
+    background-color: ${theme.colors.mainBgColor};
+    color: ${theme.colors.white};
+  }
+`}
 `;
