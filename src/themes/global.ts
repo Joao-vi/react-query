@@ -9,5 +9,8 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: 'Inter', sans-serif;
+        font-size: 62.5%; // 1rem === 10px
+
+        background-color: ${({ theme }) => theme.colors.mainBgColor};
     }
 `;
