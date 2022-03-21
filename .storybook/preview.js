@@ -1,3 +1,4 @@
+import { RouterContext } from "next/dist/shared/lib/router-context";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../src/themes/global";
 import theme from "../src/themes/theme";
@@ -11,7 +12,14 @@ export const parameters = {
     },
   },
   backgrounds: {
-    values: [{ name: "Main background", value: theme.colors.mainBgColor }],
+    values: [{ name: "Black", value: theme.colors.black }],
+  },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+    path: "/",
+    asPath: "/",
+    query: {},
+    push() {},
   },
 };
 

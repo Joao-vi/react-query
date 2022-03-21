@@ -1,6 +1,6 @@
 export default {
   colors: {
-    mainBgColor: "#202023",
+    black: "#202023",
     white: "#ffffffeb",
     orange: "#fbd38d",
     seal: "#88ccca",

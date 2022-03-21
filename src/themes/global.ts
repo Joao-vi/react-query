@@ -12,7 +12,7 @@ ${({ theme }) => css`
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 62.5%; // 1rem === 10px
 
-    background-color: ${theme.colors.mainBgColor};
+    background-color: ${theme.colors.black};
     color: ${theme.colors.white};
   }
 `}
