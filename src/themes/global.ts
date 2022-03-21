@@ -9,7 +9,7 @@ ${({ theme }) => css`
   }
 
   body {
-    font-family: "Inter", sans-serif;
+    font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 62.5%; // 1rem === 10px
 
     background-color: ${theme.colors.mainBgColor};
