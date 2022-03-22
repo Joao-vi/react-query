@@ -10,10 +10,13 @@ ${({ theme }) => css`
 
   body {
     font-family: "M PLUS Rounded 1c", sans-serif;
-    font-size: 62.5%; // 1rem === 10px
 
     background-color: ${theme.colors.black};
     color: ${theme.colors.white};
+  }
+
+  html {
+    font-size: 62.5%; // 1rem === 10px
   }
 `}
 `;

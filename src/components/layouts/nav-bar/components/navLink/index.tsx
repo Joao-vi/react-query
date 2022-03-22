@@ -8,7 +8,8 @@ interface NavLinkProps {
 }
 
 export const NavLink = ({ href, name, pathname }: NavLinkProps) => {
-  const isActive = pathname === name;
+  const isActive = pathname === href;
+
   return (
     <NextLink href={href} passHref>
       <S.Link active={isActive}>{name}</S.Link>

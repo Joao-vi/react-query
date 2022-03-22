@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.nav`
   position: fixed;
 
-  height: 8rem;
+  padding: 1rem 2rem;
   width: 100%;
   backdrop-filter: blur(10px);
 `;
@@ -19,7 +19,7 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
   ${({ theme }) => css`
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
 
     > span {
@@ -34,6 +34,6 @@ export const Navigation = styled.div`
   justify-content: center;
   gap: 1rem;
 
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 400;
 `;
