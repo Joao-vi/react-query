@@ -8,6 +8,11 @@ ${({ theme }) => css`
     box-sizing: border-box;
   }
 
+  html,
+  body {
+    height: 100%;
+  }
+
   body {
     font-family: "M PLUS Rounded 1c", sans-serif;
 
