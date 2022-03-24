@@ -34,3 +34,11 @@ interface ILocation {
   name: string;
   url: string;
 }
+
+export interface IFilterCharacter {
+  name?: string;
+  status?: "alive" | "dead" | "unknown";
+  species?: string;
+  type?: string;
+  gender?: "female" | "male" | "genderless" | "unknown";
+}
