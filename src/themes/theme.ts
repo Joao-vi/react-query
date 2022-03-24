@@ -2,6 +2,7 @@ export default {
   colors: {
     black: "#202023",
     white: "#ffffffeb",
+    gray: "#7c7d81",
     orange: "#fbd38d",
     seal: "#88ccca",
     cardBg: "#131316",

@@ -18,6 +18,11 @@ ${({ theme }) => css`
 
     background-color: ${theme.colors.black};
     color: ${theme.colors.white};
+
+    font-variant-ligatures: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    text-decoration-skip-ink: auto;
   }
 
   html {
