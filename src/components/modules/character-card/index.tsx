@@ -2,8 +2,8 @@ import { ICharacter } from "types/rick-morty-api";
 
 import * as S from "./styles";
 
-type CharacterProps = ICharacter;
-export const Character = (props: CharacterProps) => {
+type CharacterCardProps = ICharacter;
+export const CharacterCard = (props: CharacterCardProps) => {
   const { name, image, status, location, type, species, episode, origin } =
     props;
 
