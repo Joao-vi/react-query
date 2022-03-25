@@ -13,6 +13,17 @@ export const Wrapper = styled.div`
     overflow: hidden;
 
     background-color: ${theme.colors.cardBg};
+
+    animation: shimmer 1.5s cubic-bezier(0, 0.82, 0.58, 1) infinite;
+
+    @keyframes shimmer {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   `}
 `;
 
@@ -32,8 +43,59 @@ export const Content = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  span {
-    font-size: 1.5rem;
-    font-weight: normal;
+  > .name {
+    width: 80%;
+    height: 1.6rem;
+  }
+
+  > .status {
+    width: 50%;
+    height: 1rem;
+  }
+
+  > .where-title {
+    margin-top: 1.5rem;
+    width: 70%;
+    height: 1.3rem;
+  }
+
+  > .where {
+    width: 50%;
+    height: 1.2rem;
+  }
+
+  > .episode-title {
+    margin-top: 1rem;
+
+    width: 70%;
+    height: 1.3rem;
+  }
+
+  > .episode {
+    width: 50%;
+    height: 1.2rem;
+  }
+`;
+
+export const Skeleton = styled.div`
+  background: linear-gradient(
+    -90deg,
+    rgb(231 237 209 / 70%) 0%,
+    #e7edd14d 50%,
+    rgb(231 237 209 / 70%) 100%
+  );
+
+  border-radius: 4px;
+
+  background-size: 400% 400%;
+  animation: shimmer-effect 1.5s ease-in-out infinite;
+
+  @keyframes shimmer-effect {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: -135% 0%;
+    }
   }
 `;
