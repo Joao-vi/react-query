@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { CharacterCard } from ".";
 
 export default {
-  title: "Character Card",
+  title: "Modules/Character Card",
   component: CharacterCard,
   parameters: {
     layout: "centered",
