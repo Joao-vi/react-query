@@ -36,7 +36,7 @@ interface ILocation {
 }
 
 export interface IFilterCharacter {
-  name?: string;
+  page: number;
   status?: "alive" | "dead" | "unknown";
   species?: string;
   type?: string;
