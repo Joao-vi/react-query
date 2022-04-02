@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
     overflow: hidden;
 
-    background-color: ${theme.colors.cardBg};
+    background-color: ${theme.colors.black900};
 
     animation: shimmer 1.5s cubic-bezier(0, 0.82, 0.58, 1) infinite;
 
@@ -34,18 +34,20 @@ export const Img = styled.div`
 `;
 
 export const Content = styled.div`
+  height: 100%;
   flex: 1 1 0%;
   align-self: flex-start;
 
-  padding: 10px;
-
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.5rem;
+
+  padding: 10px;
 
   > .name {
     width: 80%;
-    height: 1.6rem;
+    height: 1.3rem;
   }
 
   > .status {
@@ -61,7 +63,7 @@ export const Content = styled.div`
 
   > .where {
     width: 50%;
-    height: 1.2rem;
+    height: 1rem;
   }
 
   > .episode-title {
@@ -73,7 +75,7 @@ export const Content = styled.div`
 
   > .episode {
     width: 50%;
-    height: 1.2rem;
+    height: 1rem;
   }
 `;
 
@@ -85,7 +87,7 @@ export const Skeleton = styled.div`
     rgb(231 237 209 / 70%) 100%
   );
 
-  border-radius: 4px;
+  border-radius: 2px;
 
   background-size: 400% 400%;
   animation: shimmer-effect 1.5s ease-in-out infinite;

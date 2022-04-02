@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 
     overflow: hidden;
 
-    background-color: ${theme.colors.cardBg};
+    background-color: ${theme.colors.black900};
   `}
 `;
 
