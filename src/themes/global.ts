@@ -17,7 +17,8 @@ ${({ theme }) => css`
     font-family: ${theme.font.family};
 
     background-color: ${theme.colors.black600};
-    color: ${theme.colors.white};
+    /* color: ${theme.colors.white}; */
+    color: ${theme.colors.white200};
 
     font-variant-ligatures: none;
     text-rendering: optimizelegibility;

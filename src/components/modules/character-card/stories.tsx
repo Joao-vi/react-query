@@ -12,3 +12,13 @@ export default {
 export const Default: ComponentStory<typeof CharacterCard> = (args) => {
   return <CharacterCard {...args} />;
 };
+
+Default.args = {
+  name: "Alien Rick",
+  image: "https://rickandmortyapi.com/api/character/avatar/14.jpeg",
+  species: "Alien",
+  type: "",
+  status: "unknown",
+  origin: { name: "Citadel of Ricks", url: "none" },
+  episode: ["Close Rick-counters of the Rick Kind"],
+};

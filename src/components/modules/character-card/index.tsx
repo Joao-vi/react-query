@@ -2,7 +2,7 @@ import { ICharacter } from "types/rick-morty-api";
 
 import * as S from "./styles";
 
-type CharacterCardProps = ICharacter;
+type CharacterCardProps = Partial<ICharacter>;
 export const CharacterCard = (props: CharacterCardProps) => {
   const { name, image, status, location, type, species, episode, origin } =
     props;
@@ -15,21 +15,19 @@ export const CharacterCard = (props: CharacterCardProps) => {
         <div>
           <S.Title>{name}</S.Title>
           <S.Status status={status}>
-            <div className="indicator" />
-            <span>
-              {species} - {type}
-            </span>
+            <div className={`indicator ${status}`} />
+            <span>{`${status} - ${species}`}</span>
           </S.Status>
         </div>
 
         <div>
           <S.SubTitle>Last known location:</S.SubTitle>
-          <span>{origin}</span>
+          <span>{origin.name}</span>
         </div>
 
         <div>
           <S.SubTitle>First seen in:</S.SubTitle>
-          <span>{episode}</span>
+          <span>{episode[0]}</span>
         </div>
       </S.Content>
     </S.Wrapper>

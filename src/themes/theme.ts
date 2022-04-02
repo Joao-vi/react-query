@@ -1,8 +1,10 @@
 export default {
   colors: {
     black600: "#202023",
+    black500: "#19191b",
     black900: "#131316",
     white: "#ffffffeb",
+    white200: "#EDF2F7",
     gray: "#7c7d81",
     orange: "#fbd38d",
     seal: "#88ccca",

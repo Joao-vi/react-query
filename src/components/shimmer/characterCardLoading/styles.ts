@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    width: 35rem;
-    height: 16rem;
+    width: 43rem;
+    height: 18rem;
 
     display: flex;
 
@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
     overflow: hidden;
 
-    background-color: ${theme.colors.black900};
+    background-color: ${theme.colors.black500};
 
     animation: shimmer 1.5s cubic-bezier(0, 0.82, 0.58, 1) infinite;
 
@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Img = styled.div`
-  width: 125px;
+  width: 150px;
 
   object-fit: cover;
 `;

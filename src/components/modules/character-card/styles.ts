@@ -6,22 +6,22 @@ interface IStatus {
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    width: 35rem;
-    height: 16rem;
+    width: 43rem;
+    height: 18rem;
 
     display: flex;
 
-    border-radius: 10px;
+    border-radius: 1rem;
     box-shadow: ${theme.shadows.sm};
 
     overflow: hidden;
 
-    background-color: ${theme.colors.black900};
+    background-color: ${theme.colors.black500};
   `}
 `;
 
 export const Img = styled.img`
-  width: 125px;
+  width: 150px;
 
   object-fit: cover;
 `;
@@ -31,62 +31,58 @@ export const Content = styled.div`
     flex: 1 1 0%;
     align-self: flex-start;
 
-    padding: 10px;
+    padding: 10px 0px 10px 12px;
 
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 
     span {
-      font-size: 1.5rem;
-      font-weight: normal;
+      font-size: ${theme.font.sizes.sm};
+      font-weight: ${theme.font.weights[400]};
     }
   `}
 `;
 
-const statusModifeirs = {
-  Alive: () => css`
-    background-color: green;
-  `,
-  Dead: () => css`
-    background-color: red;
-  `,
-  unknown: () => css`
-    background-color: gray;
-  `,
-};
-
 export const Status = styled.div<IStatus>`
-  ${({ status }) => css`
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 
-    > .indicator {
-      width: 10px;
-      height: 10px;
+  > .indicator {
+    width: 1rem;
+    height: 1rem;
 
-      border-radius: 50%;
+    border-radius: 50%;
 
-      ${statusModifeirs[status]}
+    &.Alive {
+      background-color: green;
     }
-
-    > span {
-      font-size: 1.2rem;
-      font-weight: bold;
+    &.Dead {
+      background-color: red;
     }
-  `}
+    &.unknown {
+      background-color: gray;
+    }
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 800;
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.lg};
+    font-weight: ${theme.font.weights[700]};
+  `}
 `;
 
 export const SubTitle = styled.h2`
   ${({ theme }) => css`
-    font-size: 1.4rem;
-    font-weight: bolder;
+    font-size: 1.5rem;
+    font-weight: ${theme.font.weights[500]};
     color: ${theme.colors.gray};
   `}
 `;
