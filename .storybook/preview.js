@@ -12,7 +12,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    values: [{ name: "Black", value: theme.colors.black }],
+    values: [{ name: "Black", value: theme.colors.black600 }],
   },
   nextRouter: {
     Provider: RouterContext.Provider,
@@ -21,6 +21,7 @@ export const parameters = {
     query: {},
     push() {},
   },
+  layout: "centered",
 };
 
 export const decorators = [

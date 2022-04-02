@@ -3,17 +3,18 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.input`
   ${({ theme }) => css`
     width: 25rem;
-    padding: 1rem;
 
     border-radius: 4px;
-    box-shadow: ${theme.shadows.sm}, inset 0 0 0 1px #fbd38d78;
+    padding: 1rem;
 
-    background-color: ${theme.colors.cardBg};
+    box-shadow: inset 0 0 0px 1px #fbd38db0;
 
-    transition: box-shadow 500ms cubic-bezier(0.5, -1, 0.1, 1.5);
+    background-color: ${theme.colors.black900};
+
+    transition: box-shadow 100ms ease-in-out;
 
     &:hover {
-      box-shadow: ${theme.shadows.sm}, inset 0 0 0px 2px #fbd38db0;
+      box-shadow: inset 0 0 0px 2px #fbd38db0;
     }
 
     &:focus {

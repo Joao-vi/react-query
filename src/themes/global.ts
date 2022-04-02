@@ -14,9 +14,9 @@ ${({ theme }) => css`
   }
 
   body {
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: ${theme.font.family};
 
-    background-color: ${theme.colors.black};
+    background-color: ${theme.colors.black600};
     color: ${theme.colors.white};
 
     font-variant-ligatures: none;
@@ -30,8 +30,9 @@ ${({ theme }) => css`
   }
 
   input {
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    font-size: 1.7rem;
+    font-family: ${theme.font.family};
+    font-size: ${theme.font.sizes.sm};
+    font-weight: 400;
     border: none;
     outline: none;
     color: ${theme.colors.white};
