@@ -14,11 +14,11 @@ export const Wrapper = styled.div`
 
     background-color: ${theme.colors.black500};
 
-    animation: shimmer 1.5s cubic-bezier(0, 0.82, 0.58, 1) infinite;
+    animation: shimmer 1s ease-in-out infinite;
 
     @keyframes shimmer {
       0% {
-        opacity: 0;
+        opacity: 0.5;
       }
       100% {
         opacity: 1;
