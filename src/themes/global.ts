@@ -28,5 +28,13 @@ ${({ theme }) => css`
   html {
     font-size: 62.5%; // 1rem === 10px
   }
+
+  input {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 1.7rem;
+    border: none;
+    outline: none;
+    color: ${theme.colors.white};
+  }
 `}
 `;

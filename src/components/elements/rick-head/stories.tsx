@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { RickHead } from ".";
 
 export default {
-  title: "Element/Rick Image",
+  title: "Elements/Rick Image",
   component: RickHead,
   parameters: {
     layout: "centered",

@@ -7,7 +7,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { NavBar } from ".";
 
 export default {
-  title: "Layout/NavBar",
+  title: "Layouts/NavBar",
   component: NavBar,
 } as ComponentMeta<typeof NavBar>;
 
