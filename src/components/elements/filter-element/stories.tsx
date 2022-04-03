@@ -17,7 +17,7 @@ export const Default: ComponentStory<typeof FilterElement> = (args) => {
 
     const handler = setTimeout(() => {
       toggleIsLoading();
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(handler);
   }, [status]);
