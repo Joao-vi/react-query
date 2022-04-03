@@ -1,3 +1,4 @@
+import { css } from "styled-components";
 export default {
   colors: {
     black600: "#202023",
@@ -27,5 +28,18 @@ export default {
       700: "700",
     },
     family: "'Inter', sans-serif",
+  },
+  animations: {
+    hoverFocus: () => css`
+      transition: box-shadow 150ms ease-in-out;
+
+      &:hover {
+        box-shadow: inset 0 0 0px 2px #fbd38db0;
+      }
+
+      &:focus {
+        box-shadow: 0px 0px 0px 4px #fbd38d36, inset 0 0 0px 2px #fbd38db0;
+      }
+    `,
   },
 } as const;

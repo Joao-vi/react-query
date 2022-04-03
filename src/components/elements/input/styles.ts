@@ -11,14 +11,6 @@ export const Wrapper = styled.input`
 
     background-color: ${theme.colors.black500};
 
-    transition: box-shadow 100ms ease-in-out;
-
-    &:hover {
-      box-shadow: inset 0 0 0px 2px #fbd38db0;
-    }
-
-    &:focus {
-      box-shadow: 0px 0px 0px 4px #fbd38d36, inset 0 0 0px 2px #fbd38db0;
-    }
+    ${theme.animations.hoverFocus()};
   `}
 `;

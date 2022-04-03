@@ -1,4 +1,3 @@
-import { RickHead } from "components/elements";
 import { NavBar } from "components/layouts";
 import { useDebounce } from "hooks/use-debounce";
 import { useState } from "react";
