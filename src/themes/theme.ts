@@ -6,7 +6,7 @@ export default {
     white: "#ffffffeb",
     white200: "#EDF2F7",
     gray: "#7c7d81",
-    orange: "#fbd38d",
+    orange: "#D7921A",
     seal: "#88ccca",
   },
   shadows: {

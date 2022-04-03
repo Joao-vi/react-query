@@ -28,6 +28,8 @@ export const Img = styled.img`
 
 export const Content = styled.div`
   ${({ theme }) => css`
+    height: 100%;
+
     flex: 1 1 0%;
     align-self: flex-start;
 
@@ -35,6 +37,7 @@ export const Content = styled.div`
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 0.5rem;
 
     span {
@@ -74,7 +77,7 @@ export const Status = styled.div<IStatus>`
 
 export const Title = styled.h1`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.lg};
+    font-size: 2.2rem;
     font-weight: ${theme.font.weights[700]};
   `}
 `;

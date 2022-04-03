@@ -15,6 +15,7 @@ ${({ theme }) => css`
 
   body {
     font-family: ${theme.font.family};
+    font-size: ${theme.font.sizes.md};
 
     background-color: ${theme.colors.black600};
     /* color: ${theme.colors.white}; */
@@ -30,6 +31,7 @@ ${({ theme }) => css`
     font-size: 62.5%; // 1rem === 10px
   }
 
+  button,
   input {
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.sm};
