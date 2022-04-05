@@ -18,7 +18,6 @@ ${({ theme }) => css`
     font-size: ${theme.font.sizes.md};
 
     background-color: ${theme.colors.black600};
-    /* color: ${theme.colors.white}; */
     color: ${theme.colors.white200};
 
     font-variant-ligatures: none;
