@@ -38,6 +38,7 @@ ${({ theme }) => css`
     border: none;
     outline: none;
     color: ${theme.colors.white};
+    background-color: transparent;
   }
 `}
 `;

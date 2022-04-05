@@ -39,7 +39,7 @@ export default {
         box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
       }
 
-      &:focus {
+      &:focus-within {
         box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 4px #fbd38d36;
       }
     `,
