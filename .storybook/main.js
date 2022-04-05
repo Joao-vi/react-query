@@ -1,3 +1,6 @@
+const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+
 module.exports = {
   stories: [
     "../src/components/**/stories.mdx",
@@ -10,4 +13,23 @@ module.exports = {
     "storybook-addon-next-router",
   ],
   framework: "@storybook/react",
+  typescript: { reactDocgen: false },
+  extends: ["./tsconfig.json"],
+  webpackFinal: async (config) => {
+    config.resolve.plugins = config.resolve.plugins || [];
+    config.resolve.plugins.push(
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, "../tsconfig.json"),
+      })
+    );
+    return {
+      ...config,
+      plugins: config.plugins.filter((plugin) => {
+        if (plugin.constructor.name === "ESLintWebpackPlugin") {
+          return false;
+        }
+        return true;
+      }),
+    };
+  },
 };

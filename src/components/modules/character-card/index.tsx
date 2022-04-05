@@ -3,6 +3,7 @@ import { ICharacter } from "types/rick-morty-api";
 import * as S from "./styles";
 
 type CharacterCardProps = Partial<ICharacter>;
+
 export const CharacterCard = (props: CharacterCardProps) => {
   const { name, image, status, location, type, species, episode, origin } =
     props;

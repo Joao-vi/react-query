@@ -6,6 +6,7 @@ interface IFilterElement {
   children: string;
   onClick: () => void;
 }
+
 export const FilterElement = (props: IFilterElement) => {
   const { children, onClick, isSelected, isLoading } = props;
   return (
