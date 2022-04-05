@@ -42,7 +42,7 @@ export const Content = styled.div`
 
     span {
       font-size: ${theme.font.sizes.sm};
-      font-weight: ${theme.font.weights[400]};
+      font-weight: ${theme.font.weights[300]};
     }
   `}
 `;
@@ -85,7 +85,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.h2`
   ${({ theme }) => css`
     font-size: 1.5rem;
-    font-weight: ${theme.font.weights[500]};
+    font-weight: ${theme.font.weights[700]};
     color: ${theme.colors.gray};
   `}
 `;

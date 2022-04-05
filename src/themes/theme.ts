@@ -31,14 +31,16 @@ export default {
   },
   animations: {
     hoverFocus: () => css`
+      box-shadow: inset 0 0 0px 0px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
+
       transition: box-shadow 150ms ease-in-out;
 
       &:hover {
-        box-shadow: inset 0 0 0px 2px #fbd38db0;
+        box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
       }
 
       &:focus {
-        box-shadow: 0px 0px 0px 4px #fbd38d36, inset 0 0 0px 2px #fbd38db0;
+        box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 4px #fbd38d36;
       }
     `,
   },
