@@ -1,3 +1,3 @@
 //appendHere
-export * from "./main";
+export * from "./layout";
 export * from "./nav-bar";

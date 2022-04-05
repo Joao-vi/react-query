@@ -4,7 +4,6 @@ export const Wrapper = styled.nav`
   position: fixed;
 
   padding: 1rem 2rem;
-  width: 100%;
   backdrop-filter: blur(10px);
 `;
 

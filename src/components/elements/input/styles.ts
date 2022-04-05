@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
     cursor: text;
     position: relative;
 
-    width: 25rem;
+    width: 100%;
+    max-width: 35rem;
 
     display: flex;
 

@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import { Wrapper as FilterElement } from "components/elements/filter-element/styles";
+
 export const Wrapper = styled.div`
   width: 100%;
 
@@ -21,7 +23,7 @@ export const FilterGroup = styled.div`
     justify-content: space-evenly;
     gap: 1rem;
 
-    padding: 1.3rem 2rem;
+    padding: 1.5rem 1rem;
     border: 1px dashed ${theme.colors.gray};
     border-radius: 4px;
 
@@ -33,6 +35,14 @@ export const FilterGroup = styled.div`
       padding: 0 0.3rem;
 
       background-color: ${theme.colors.black600};
+    }
+
+    @media (max-width: 505px) {
+      ${FilterElement} {
+        padding: 1rem 2rem;
+        width: 100%;
+      }
+      flex-direction: column;
     }
   `}
 `;

@@ -17,5 +17,5 @@ Default.args = {
   hasIcon: true,
   Icon: IoSearchOutline,
   iconPlacement: "left",
-  placeHolder: "Search for character",
+  placeholder: "Search for character",
 };

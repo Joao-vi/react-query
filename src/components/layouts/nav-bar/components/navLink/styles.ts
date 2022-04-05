@@ -10,6 +10,6 @@ export const Link = styled.a<LinkProps>`
 
     padding: 5px;
     background-color: ${active ? theme.colors.seal : "transparent"};
-    color: ${active ? theme.colors.black : theme.colors.white};
+    color: ${active ? theme.colors.black600 : theme.colors.white};
   `}
 `;

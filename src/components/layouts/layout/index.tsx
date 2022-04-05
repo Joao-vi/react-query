@@ -5,6 +5,6 @@ interface MainProps {
   children: ReactNode;
 }
 
-export const Main = ({ children }: MainProps) => {
+export const Layout = ({ children }: MainProps) => {
   return <S.Wrapper> {children} </S.Wrapper>;
 };
