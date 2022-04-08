@@ -21,7 +21,8 @@ export const Wrapper = styled.div`
 
     ${theme.animations.hoverFocus()};
 
-    box-shadow: inset 0 0 0px 1px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
+    box-shadow: inset 0 0 0px 1px ${theme.colors.gray},
+      0px 0px 0px 0px #fbd38d36;
   `}
 `;
 

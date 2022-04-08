@@ -1,13 +1,16 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.nav`
+  left: 0;
+  right: 0;
   position: fixed;
+  z-index: 999;
 
-  padding: 1rem 2rem;
   backdrop-filter: blur(10px);
 `;
 
 export const Content = styled.div`
+  padding: 1rem 2rem;
   max-width: 100rem;
   margin: 0 auto;
 

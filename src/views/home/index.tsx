@@ -13,14 +13,17 @@ import { CharacterCardLoading } from "components/shimmer";
 
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 export const Home = () => {
-  const [name, setName] = useState("");
-  const [status, setStatus] = useState("");
-  const [gender, setGender] = useState("");
+  const [name, setName] = useState<string>(undefined);
+  const [status, setStatus] = useState<IFilterCharacter["status"] | null>(null);
+  const [gender, setGender] = useState<IFilterCharacter["gender"] | null>(null);
   const debouncedName = useDebounce(name);
 
   const [filters, setFilters] = useState<IFilterCharacter>({ page: 0 });
 
-  const { data, isLoading, isFetching } = useCharacter(debouncedName, filters);
+  const { data, isLoading, isFetching } = useCharacter(debouncedName, {
+    gender,
+    status,
+  });
 
   return (
     <S.Content>

@@ -19,23 +19,26 @@ export const FilterCharacter = (props: IFilterCharacter) => {
         <span className="title-group">Status</span>
         <FilterElement
           isLoading={isLoading}
-          isSelected={status === "alive"}
-          onClick={() => setStatus("alive")}
+          value="alive"
+          data={status}
+          setData={setStatus}
         >
           Alive
         </FilterElement>
 
         <FilterElement
           isLoading={isLoading}
-          isSelected={status === "dead"}
-          onClick={() => setStatus("dead")}
+          value="dead"
+          data={status}
+          setData={setStatus}
         >
           Dead
         </FilterElement>
         <FilterElement
           isLoading={isLoading}
-          isSelected={status === "unknown"}
-          onClick={() => setStatus("unknown")}
+          value="unknown"
+          data={status}
+          setData={setStatus}
         >
           Unknown
         </FilterElement>
@@ -43,24 +46,30 @@ export const FilterCharacter = (props: IFilterCharacter) => {
 
       <S.FilterGroup>
         <span className="title-group">Gender</span>
+
         <FilterElement
           isLoading={isLoading}
-          isSelected={gender === "female"}
-          onClick={() => setGender("female")}
+          value="female"
+          data={gender}
+          setData={setGender}
         >
           Female
         </FilterElement>
+
         <FilterElement
           isLoading={isLoading}
-          isSelected={gender === "male"}
-          onClick={() => setGender("male")}
+          value="male"
+          data={gender}
+          setData={setGender}
         >
           Male
         </FilterElement>
+
         <FilterElement
           isLoading={isLoading}
-          isSelected={gender === "genderless"}
-          onClick={() => setGender("genderless")}
+          value="genderless"
+          data={gender}
+          setData={setGender}
         >
           Genderless
         </FilterElement>
