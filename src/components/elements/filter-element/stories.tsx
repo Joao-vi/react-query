@@ -17,34 +17,22 @@ export const Default: ComponentStory<typeof FilterElement> = (args) => {
 
     const handler = setTimeout(() => {
       toggleIsLoading();
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(handler);
   }, [status]);
 
   return (
-    <div style={{ display: "flex", gap: "2rem" }}>
-      <FilterElement
-        isLoading={isLoading}
-        isSelected={status === "Alive"}
-        onClick={() => setStatus("Alive")}
-      >
-        Alive
-      </FilterElement>
-      <FilterElement
-        isLoading={isLoading}
-        isSelected={status === "Dead"}
-        onClick={() => setStatus("Dead")}
-      >
-        Dead
-      </FilterElement>
-      <FilterElement
-        isLoading={isLoading}
-        isSelected={status === "Unknown"}
-        onClick={() => setStatus("Unknown")}
-      >
-        Unknown
-      </FilterElement>
-    </div>
+    <FilterElement
+      {...args}
+      setData={setStatus}
+      data={status}
+      isLoading={isLoading}
+    />
   );
+};
+
+Default.args = {
+  children: "Alive",
+  value: "",
 };

@@ -6,7 +6,15 @@ import { Input } from ".";
 export default {
   title: "elements/Input",
   component: Input,
-  parameters: {},
+  argTypes: {
+    iconPlacement: {
+      options: ["left", "right"],
+      control: "radio",
+    },
+    hasIcon: {
+      type: "boolean",
+    },
+  },
 } as ComponentMeta<typeof Input>;
 
 export const Default: ComponentStory<typeof Input> = (args) => (
@@ -14,8 +22,6 @@ export const Default: ComponentStory<typeof Input> = (args) => (
 );
 
 Default.args = {
-  hasIcon: true,
   Icon: IoSearchOutline,
-  iconPlacement: "left",
   placeholder: "Search for character",
 };
