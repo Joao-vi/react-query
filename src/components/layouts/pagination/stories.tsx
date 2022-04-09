@@ -15,5 +15,5 @@ export const Default: ComponentStory<typeof Pagination> = (args) => {
 
 Default.args = {
   pages: 20,
-  spread: 5,
+  sibling: 5,
 };
