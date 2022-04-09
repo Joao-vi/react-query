@@ -5,6 +5,6 @@ interface MainProps {
   children: ReactNode;
 }
 
-export const Layout = ({ children }: MainProps) => {
+export const MaxWidth = ({ children }: MainProps) => {
   return <S.Wrapper> {children} </S.Wrapper>;
 };

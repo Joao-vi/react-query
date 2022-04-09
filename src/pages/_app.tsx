@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "themes/global";
 import theme from "themes/theme";
 
-import { Layout, NavBar } from "components/layouts";
+import { MaxWidth, NavBar, Footer } from "components/layouts";
 
 const queryClient = new QueryClient();
 
@@ -15,10 +15,11 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyles />
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
-        <Layout>
-          <NavBar />
+        <NavBar />
+        <MaxWidth>
           <Component {...pageProps} />
-        </Layout>
+        </MaxWidth>
+        <Footer />
       </QueryClientProvider>
     </ThemeProvider>
   );
