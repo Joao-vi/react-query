@@ -14,9 +14,9 @@ export const NavBar = () => {
           Rick<span>&</span>Morty
         </S.Title>
 
-        <S.Navigation>
+        {/* <S.Navigation>
           <NavLink href="/" name="Home" pathname={pathname} />
-        </S.Navigation>
+        </S.Navigation> */}
       </S.Content>
     </S.Wrapper>
   );
