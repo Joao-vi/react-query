@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import useMedia from "use-media";
 
@@ -19,23 +19,31 @@ export const Pagination = (props: IPagination) => {
 
   const isSmallScreen = useMedia("(min-width:600px");
 
-  const nextIndexs = Array(sibling)
-    .fill(null)
-    .map((_, index) => {
-      const next = current + index + 1;
-      const isValid = next <= pages;
-      return isValid ? next : false;
-    })
-    .filter(Boolean) as number[];
+  const nextIndexs = useMemo(
+    () =>
+      Array(sibling)
+        .fill(null)
+        .map((_, index) => {
+          const next = current + index + 1;
+          const isValid = next <= pages;
+          return isValid ? next : false;
+        })
+        .filter(Boolean) as number[],
+    [sibling, current, pages]
+  );
 
-  const prevIndexs = Array(sibling)
-    .fill(null)
-    .map((_, index) => {
-      const prev = current - sibling + index;
-      const isValid = prev >= 1;
-      return isValid ? prev : false;
-    })
-    .filter(Boolean) as number[];
+  const prevIndexs = useMemo(
+    () =>
+      Array(sibling)
+        .fill(null)
+        .map((_, index) => {
+          const prev = current - sibling + index;
+          const isValid = prev >= 1;
+          return isValid ? prev : false;
+        })
+        .filter(Boolean) as number[],
+    [sibling, current]
+  );
 
   const firstOnes = prevIndexs[0] > sibling + 1 ? [1, 2] : [];
 
