@@ -17,6 +17,17 @@ export const Wrapper = styled.div`
     overflow: hidden;
 
     background-color: ${theme.colors.black500};
+
+    animation: fade-in-animation 200ms ease-in-out forwards;
+
+    @keyframes fade-in-animation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   `}
 `;
 

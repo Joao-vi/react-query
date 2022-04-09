@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
 import { useDebounce } from "hooks/use-debounce";
@@ -19,7 +19,7 @@ export const Home = () => {
   const debouncedName = useDebounce(name);
   const [status, setStatus] = useState<IFilterCharacter["status"] | null>(null);
   const [gender, setGender] = useState<IFilterCharacter["gender"] | null>(null);
-  const [page, setPage] = useState<number | null>(1);
+  const [page, setPage] = useState<number>(1);
   const debouncedPage = useDebounce(page, 100);
 
   // Fetchs
@@ -28,6 +28,10 @@ export const Home = () => {
     status,
     page: debouncedPage,
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [status, gender]);
 
   return (
     <S.Content>
@@ -51,31 +55,28 @@ export const Home = () => {
         />
       </S.ActionsContainer>
 
-      {isLoading ? (
+      {isLoading || isFetching ? (
         <S.ContainerCards>
           {mockArray.map((_, index) => (
             <CharacterCardLoading key={index} />
           ))}
         </S.ContainerCards>
       ) : (
-        <>
-          <S.ContainerCards>
-            {data?.results?.map((character) => (
-              <CharacterCard key={character.id} {...character} />
-            ))}
-          </S.ContainerCards>
+        <S.ContainerCards>
+          {data?.results?.map((character, index) => (
+            <CharacterCard delay={index} key={character.id} {...character} />
+          ))}
+        </S.ContainerCards>
+      )}
 
-          {!!data?.info && data.info.pages > 1 && (
-            <Pagination
-              current={page}
-              setCurrent={setPage}
-              pages={data.info.pages}
-              sibling={2}
-              next={data.info.next}
-              prev={data.info.prev}
-            />
-          )}
-        </>
+      {!!data?.info && data.info.pages > 1 && (
+        <Pagination
+          isLoading={isLoading || isFetching}
+          current={page}
+          setCurrent={setPage}
+          pages={data.info.pages}
+          sibling={2}
+        />
       )}
     </S.Content>
   );

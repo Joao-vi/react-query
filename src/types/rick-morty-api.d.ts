@@ -14,8 +14,8 @@ export interface ICharacter {
 }
 
 export interface IResponse {
-  info: IInfo;
-  results: ICharacter[];
+  info?: IInfo;
+  results?: ICharacter[];
 }
 
 interface IInfo {

@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+import { Wrapper as PageElement } from "components/elements/page-element/styles";
+
+type IArrow = {
+  isLoading: boolean;
+};
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     width: 100%;
@@ -18,14 +23,21 @@ export const Wrapper = styled.div`
   `}
 `;
 
-export const Content = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 1rem;
+export const Content = styled.div<IArrow>`
+  ${({ theme, isLoading }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+
+    ${PageElement} {
+      ${isLoading && theme.animations.isLoading()}
+    }
+  `}
 `;
-export const Arrow = styled.button`
-  ${({ theme }) => css`
+
+export const Arrow = styled.button<IArrow>`
+  ${({ theme, isLoading }) => css`
     cursor: pointer;
 
     display: flex;
@@ -51,7 +63,7 @@ export const Arrow = styled.button`
       background-color: ${theme.colors.orange};
     }
 
-    ${theme.animations.hoverFocus()};
+    ${isLoading ? theme.animations.isLoading() : theme.animations.hoverFocus()}
 
     > svg {
       font-size: 1.8rem;

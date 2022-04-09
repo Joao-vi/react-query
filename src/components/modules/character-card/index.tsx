@@ -2,11 +2,24 @@ import { ICharacter } from "types/rick-morty-api";
 
 import * as S from "./styles";
 
-type CharacterCardProps = Partial<ICharacter>;
+type CharacterCardProps = {
+  basTime?: number; //ms
+  delay?: number;
+} & Partial<ICharacter>;
 
 export const CharacterCard = (props: CharacterCardProps) => {
-  const { name, image, status, location, type, species, episode, origin } =
-    props;
+  const {
+    name,
+    image,
+    status,
+    location,
+    type,
+    species,
+    episode,
+    origin,
+    delay = 1,
+    basTime = 50,
+  } = props;
 
   return (
     <S.Wrapper>

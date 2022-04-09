@@ -1,5 +1,8 @@
 import * as S from "./styles";
 
-export const FadeIn = () => {
-  return <S.Wrapper>FadeIn</S.Wrapper>;
+interface IFadeIn {
+  children: JSX.Element;
+}
+export const FadeIn = ({ children }: IFadeIn) => {
+  return <S.Wrapper>{children}</S.Wrapper>;
 };

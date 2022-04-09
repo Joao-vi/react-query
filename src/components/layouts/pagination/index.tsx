@@ -9,13 +9,16 @@ import { IResponse } from "types/rick-morty-api";
 import { PageElement } from "components/elements";
 
 type IPagination = {
+  isLoading: boolean;
   current: number;
   setCurrent: Dispatch<SetStateAction<number>>;
   sibling: number;
-} & IResponse["info"];
+} & Omit<IResponse["info"], "next" | "prev">;
+
+const mockedArray = [...Array.from(Array(10).keys())];
 
 export const Pagination = (props: IPagination) => {
-  const { pages, next, prev, current, sibling, setCurrent } = props;
+  const { pages, current, sibling, setCurrent, isLoading } = props;
 
   const isSmallScreen = useMedia("(min-width:600px");
 
@@ -55,13 +58,14 @@ export const Pagination = (props: IPagination) => {
   return (
     <S.Wrapper>
       <S.Arrow
+        isLoading={isLoading}
         disabled={current === 1}
         onClick={() => setCurrent((state) => state - 1)}
       >
         <IoIosArrowBack />
       </S.Arrow>
 
-      <S.Content>
+      <S.Content isLoading={isLoading}>
         {!!firstOnes.length && isSmallScreen && (
           <>
             {firstOnes.map((label) => (
@@ -104,6 +108,7 @@ export const Pagination = (props: IPagination) => {
       </S.Content>
 
       <S.Arrow
+        isLoading={isLoading}
         disabled={current === pages}
         onClick={() => setCurrent((state) => state + 1)}
       >

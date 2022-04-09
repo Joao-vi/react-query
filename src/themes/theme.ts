@@ -1,4 +1,56 @@
 import { css } from "styled-components";
+
+const animations = {
+  hoverFocus: () => css`
+    box-shadow: inset 0 0 0px 0px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
+
+    transition: box-shadow 150ms ease-in-out;
+
+    &:hover {
+      box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
+    }
+
+    &:focus-within {
+      box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 4px #fbd38d36;
+    }
+  `,
+  fadeIn: () => css`
+    @keyframes fade-in-animation {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  `,
+  isLoading: () => css`
+    pointer-events: none;
+
+    background: linear-gradient(
+      -90deg,
+      #e7edd145 0%,
+      #f8f8f800 50%,
+      #e7edf138 100%
+    );
+
+    background-size: 400% 400%;
+    animation: shimmer-effect 1.5s ease-in-out infinite;
+
+    @keyframes shimmer-effect {
+      0% {
+        background-position: 0% 0%;
+      }
+
+      100% {
+        background-position: -135% 0%;
+      }
+    }
+  `,
+};
+
 export default {
   colors: {
     black600: "#202023",
@@ -29,19 +81,5 @@ export default {
     },
     family: "'Inter', sans-serif",
   },
-  animations: {
-    hoverFocus: () => css`
-      box-shadow: inset 0 0 0px 0px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
-
-      transition: box-shadow 150ms ease-in-out;
-
-      &:hover {
-        box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
-      }
-
-      &:focus-within {
-        box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 4px #fbd38d36;
-      }
-    `,
-  },
+  animations,
 } as const;

@@ -23,7 +23,7 @@ export const useCharacter = (
 ) => {
   return useQuery(["character", name, filter], {
     queryFn: () => fecthCharacter(name, filter),
-    // enabled: !!name,
     refetchOnWindowFocus: false,
+    keepPreviousData: true,
   });
 };
