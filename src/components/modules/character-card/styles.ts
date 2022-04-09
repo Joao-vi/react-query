@@ -7,7 +7,7 @@ interface IStatus {
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     width: 43rem;
-    height: 18rem;
+    height: 16rem;
 
     display: flex;
 

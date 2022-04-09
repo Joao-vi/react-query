@@ -19,10 +19,10 @@ export interface IResponse {
 }
 
 interface IInfo {
-  count: number;
-  pages: number;
-  next: string | null;
-  prev: string | null;
+  count?: number;
+  pages?: number;
+  next?: string;
+  prev?: string;
 }
 
 interface IOrigin {
