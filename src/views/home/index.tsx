@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
 import { useDebounce } from "hooks/use-debounce";
@@ -13,13 +13,29 @@ import { CharacterCardLoading } from "components/shimmer";
 import { Pagination } from "components/layouts";
 
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
+
+const filterReducer = (
+  state,
+  action
+): Omit<IFilterCharacter, "species" | "type"> => ({
+  ...state,
+  ...(typeof action === "function" ? action(state) : action),
+});
 export const Home = () => {
   //states
   const [name, setName] = useState<string>(undefined);
   const debouncedName = useDebounce(name);
+
+  const [filter, setFilter] = useReducer(filterReducer, {
+    status: null,
+    gender: null,
+    page: 1,
+  });
+
   const [status, setStatus] = useState<IFilterCharacter["status"] | null>(null);
   const [gender, setGender] = useState<IFilterCharacter["gender"] | null>(null);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState(1);
+
   const debouncedPage = useDebounce(page, 100);
 
   // Fetchs
@@ -30,8 +46,8 @@ export const Home = () => {
   });
 
   useEffect(() => {
-    setPage(1);
-  }, [status, gender]);
+    setFilter({ page: 1 });
+  }, [filter, debouncedName]);
 
   return (
     <S.Content>
@@ -48,10 +64,8 @@ export const Home = () => {
         />
         <FilterCharacter
           isLoading={isLoading || isFetching}
-          status={status}
-          setStatus={setStatus}
-          gender={gender}
-          setGender={setGender}
+          filter={filter}
+          setFilter={setFilter}
         />
       </S.ActionsContainer>
 

@@ -1,17 +1,16 @@
 import { FilterElement } from "components/elements";
 import { Dispatch, SetStateAction } from "react";
+import { IFilterCharacter } from "types/rick-morty-api";
 import * as S from "./styles";
 
-interface IFilterCharacter {
+interface FilterCharacterProps {
   isLoading: boolean;
-  status: string;
-  setStatus: Dispatch<SetStateAction<string>>;
-  gender: string;
-  setGender: Dispatch<SetStateAction<string>>;
+  filter: Omit<IFilterCharacter, "type" | "species">;
+  setFilter: Dispatch<any>;
 }
 
-export const FilterCharacter = (props: IFilterCharacter) => {
-  const { isLoading, status, setStatus, gender, setGender } = props;
+export const FilterCharacter = (props: FilterCharacterProps) => {
+  const { isLoading, setFilter, filter } = props;
 
   return (
     <S.Wrapper>
@@ -19,26 +18,35 @@ export const FilterCharacter = (props: IFilterCharacter) => {
         <span className="title-group">Status</span>
         <FilterElement
           isLoading={isLoading}
-          value="alive"
-          data={status}
-          setData={setStatus}
+          onClick={() =>
+            setFilter(({ status }) => ({
+              status: status === "alive" ? null : "alive",
+            }))
+          }
+          isSelected={filter.status === "alive"}
         >
           Alive
         </FilterElement>
 
         <FilterElement
           isLoading={isLoading}
-          value="dead"
-          data={status}
-          setData={setStatus}
+          onClick={() =>
+            setFilter(({ status }) => ({
+              status: status === "dead" ? null : "dead",
+            }))
+          }
+          isSelected={filter.status === "dead"}
         >
           Dead
         </FilterElement>
         <FilterElement
           isLoading={isLoading}
-          value="unknown"
-          data={status}
-          setData={setStatus}
+          onClick={() =>
+            setFilter(({ status }) => ({
+              status: status === "unknown" ? null : "unknown",
+            }))
+          }
+          isSelected={filter.status === "unknown"}
         >
           Unknown
         </FilterElement>
@@ -49,27 +57,36 @@ export const FilterCharacter = (props: IFilterCharacter) => {
 
         <FilterElement
           isLoading={isLoading}
-          value="female"
-          data={gender}
-          setData={setGender}
+          onClick={() =>
+            setFilter(({ gender }) => ({
+              gender: gender === "female" ? null : "female",
+            }))
+          }
+          isSelected={filter.gender === "female"}
         >
           Female
         </FilterElement>
 
         <FilterElement
           isLoading={isLoading}
-          value="male"
-          data={gender}
-          setData={setGender}
+          onClick={() =>
+            setFilter(({ gender }) => ({
+              gender: gender === "male" ? null : "male",
+            }))
+          }
+          isSelected={filter.gender === "male"}
         >
           Male
         </FilterElement>
 
         <FilterElement
           isLoading={isLoading}
-          value="genderless"
-          data={gender}
-          setData={setGender}
+          onClick={() =>
+            setFilter(({ gender }) => ({
+              gender: gender === "genderless" ? null : "genderless",
+            }))
+          }
+          isSelected={filter.gender === "genderless"}
         >
           Genderless
         </FilterElement>
