@@ -4,21 +4,23 @@ import useMedia from "use-media";
 
 import * as S from "./styles";
 
-import { IResponse } from "types/rick-morty-api";
+import { IFilterCharacter, IResponse } from "types/rick-morty-api";
 
 import { PageElement } from "components/elements";
 
 type IPagination = {
   isLoading: boolean;
   current: number;
-  setCurrent: Dispatch<SetStateAction<number>>;
+  setFilter: Dispatch<
+    IFilterCharacter | ((state: IFilterCharacter) => IFilterCharacter)
+  >;
   sibling: number;
 } & Omit<IResponse["info"], "next" | "prev">;
 
 const mockedArray = [...Array.from(Array(10).keys())];
 
 export const Pagination = (props: IPagination) => {
-  const { pages, current, sibling, setCurrent, isLoading } = props;
+  const { pages, current, sibling, setFilter, isLoading } = props;
 
   const isSmallScreen = useMedia("(min-width:600px");
 
@@ -60,7 +62,7 @@ export const Pagination = (props: IPagination) => {
       <S.Arrow
         isLoading={isLoading}
         disabled={current === 1}
-        onClick={() => setCurrent((state) => state - 1)}
+        onClick={() => setFilter((state) => ({ page: state.page - 1 }))}
       >
         <IoIosArrowBack />
       </S.Arrow>
@@ -69,18 +71,18 @@ export const Pagination = (props: IPagination) => {
         {!!firstOnes.length && isSmallScreen && (
           <>
             {firstOnes.map((label) => (
-              <PageElement key={label} setCurrent={setCurrent}>
+              <PageElement key={label} setFilter={setFilter}>
                 {label}
               </PageElement>
             ))}
-            <PageElement isValid={false} setCurrent={setCurrent}>
+            <PageElement isValid={false} setFilter={setFilter}>
               ...
             </PageElement>
           </>
         )}
 
         {prevIndexs.map((label) => (
-          <PageElement key={label} setCurrent={setCurrent}>
+          <PageElement key={label} setFilter={setFilter}>
             {label}
           </PageElement>
         ))}
@@ -90,7 +92,7 @@ export const Pagination = (props: IPagination) => {
         </PageElement>
 
         {nextIndexs.map((label) => (
-          <PageElement key={label} setCurrent={setCurrent}>
+          <PageElement key={label} setFilter={setFilter}>
             {label}
           </PageElement>
         ))}
@@ -99,7 +101,7 @@ export const Pagination = (props: IPagination) => {
           <>
             <PageElement isValid={false}>...</PageElement>
             {lastOnes.map((label) => (
-              <PageElement key={label} setCurrent={setCurrent}>
+              <PageElement key={label} setFilter={setFilter}>
                 {label}
               </PageElement>
             ))}
@@ -110,7 +112,7 @@ export const Pagination = (props: IPagination) => {
       <S.Arrow
         isLoading={isLoading}
         disabled={current === pages}
-        onClick={() => setCurrent((state) => state + 1)}
+        onClick={() => setFilter((state) => ({ page: state.page + 1 }))}
       >
         <IoIosArrowForward />
       </S.Arrow>

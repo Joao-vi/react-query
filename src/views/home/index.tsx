@@ -15,39 +15,32 @@ import { Pagination } from "components/layouts";
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 
 const filterReducer = (
-  state,
-  action
-): Omit<IFilterCharacter, "species" | "type"> => ({
+  state: IFilterCharacter,
+  update: IFilterCharacter | ((state: IFilterCharacter) => IFilterCharacter)
+) => ({
   ...state,
-  ...(typeof action === "function" ? action(state) : action),
+  ...(typeof update === "function" ? update(state) : update),
 });
+
 export const Home = () => {
   //states
-  const [name, setName] = useState<string>(undefined);
-  const debouncedName = useDebounce(name);
-
   const [filter, setFilter] = useReducer(filterReducer, {
     status: null,
     gender: null,
     page: 1,
   });
 
-  const [status, setStatus] = useState<IFilterCharacter["status"] | null>(null);
-  const [gender, setGender] = useState<IFilterCharacter["gender"] | null>(null);
-  const [page, setPage] = useState(1);
-
-  const debouncedPage = useDebounce(page, 100);
+  const [name, setName] = useState<string>(undefined);
+  const debouncedName = useDebounce(name);
 
   // Fetchs
   const { data, isLoading, isFetching } = useCharacter(debouncedName, {
-    gender,
-    status,
-    page: debouncedPage,
+    ...filter,
   });
 
   useEffect(() => {
     setFilter({ page: 1 });
-  }, [filter, debouncedName]);
+  }, [filter.gender, filter.status, debouncedName]);
 
   return (
     <S.Content>
@@ -86,8 +79,8 @@ export const Home = () => {
       {!!data?.info && data.info.pages > 1 && (
         <Pagination
           isLoading={isLoading || isFetching}
-          current={page}
-          setCurrent={setPage}
+          current={filter.page}
+          setFilter={setFilter}
           pages={data.info.pages}
           sibling={2}
         />

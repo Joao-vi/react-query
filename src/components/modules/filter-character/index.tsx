@@ -5,8 +5,8 @@ import * as S from "./styles";
 
 interface FilterCharacterProps {
   isLoading: boolean;
-  filter: Omit<IFilterCharacter, "type" | "species">;
-  setFilter: Dispatch<any>;
+  filter: IFilterCharacter;
+  setFilter: Dispatch<IFilterCharacter>;
 }
 
 export const FilterCharacter = (props: FilterCharacterProps) => {
@@ -19,9 +19,7 @@ export const FilterCharacter = (props: FilterCharacterProps) => {
         <FilterElement
           isLoading={isLoading}
           onClick={() =>
-            setFilter(({ status }) => ({
-              status: status === "alive" ? null : "alive",
-            }))
+            setFilter({ status: filter.status === "alive" ? null : "alive" })
           }
           isSelected={filter.status === "alive"}
         >
@@ -31,9 +29,7 @@ export const FilterCharacter = (props: FilterCharacterProps) => {
         <FilterElement
           isLoading={isLoading}
           onClick={() =>
-            setFilter(({ status }) => ({
-              status: status === "dead" ? null : "dead",
-            }))
+            setFilter({ status: filter.status === "dead" ? null : "dead" })
           }
           isSelected={filter.status === "dead"}
         >
@@ -42,9 +38,9 @@ export const FilterCharacter = (props: FilterCharacterProps) => {
         <FilterElement
           isLoading={isLoading}
           onClick={() =>
-            setFilter(({ status }) => ({
-              status: status === "unknown" ? null : "unknown",
-            }))
+            setFilter({
+              status: filter.status === "unknown" ? null : "unknown",
+            })
           }
           isSelected={filter.status === "unknown"}
         >
@@ -58,9 +54,9 @@ export const FilterCharacter = (props: FilterCharacterProps) => {
         <FilterElement
           isLoading={isLoading}
           onClick={() =>
-            setFilter(({ gender }) => ({
-              gender: gender === "female" ? null : "female",
-            }))
+            setFilter({
+              gender: filter.gender === "female" ? null : "female",
+            })
           }
           isSelected={filter.gender === "female"}
         >
@@ -70,9 +66,9 @@ export const FilterCharacter = (props: FilterCharacterProps) => {
         <FilterElement
           isLoading={isLoading}
           onClick={() =>
-            setFilter(({ gender }) => ({
-              gender: gender === "male" ? null : "male",
-            }))
+            setFilter({
+              gender: filter.gender === "male" ? null : "male",
+            })
           }
           isSelected={filter.gender === "male"}
         >
@@ -82,9 +78,9 @@ export const FilterCharacter = (props: FilterCharacterProps) => {
         <FilterElement
           isLoading={isLoading}
           onClick={() =>
-            setFilter(({ gender }) => ({
-              gender: gender === "genderless" ? null : "genderless",
-            }))
+            setFilter({
+              gender: filter.gender === "genderless" ? null : "genderless",
+            })
           }
           isSelected={filter.gender === "genderless"}
         >

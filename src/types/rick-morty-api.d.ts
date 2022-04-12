@@ -38,7 +38,5 @@ interface ILocation {
 export interface IFilterCharacter {
   page?: number;
   status?: "alive" | "dead" | "unknown";
-  species?: string;
-  type?: string;
   gender?: "female" | "male" | "genderless" | "unknown";
 }
