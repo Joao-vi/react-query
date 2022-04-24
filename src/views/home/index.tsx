@@ -8,7 +8,11 @@ import { IFilterCharacter } from "types/rick-morty-api";
 import * as S from "./styles";
 
 import { RickHead, Input } from "components/elements";
-import { CharacterCard, FilterCharacter } from "components/modules";
+import {
+  CharacterCard,
+  FilterCharacter,
+  IFilterGroup,
+} from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
 import { Pagination } from "components/layouts";
 
@@ -21,6 +25,33 @@ const filterReducer = (
   ...state,
   ...(typeof update === "function" ? update(state) : update),
 });
+
+const filterGroups: IFilterGroup[] = [
+  {
+    title: "Status",
+    key: "status",
+    options: [
+      { label: "Alive", value: "alive" },
+      { label: "Dead", value: "dead" },
+      {
+        label: "Unknown",
+        value: "unknown",
+      },
+    ],
+  },
+  {
+    title: "Gender",
+    key: "gender",
+    options: [
+      { label: "Male", value: "male" },
+      { label: "Female", value: "female" },
+      {
+        label: "Genderless",
+        value: "genderless",
+      },
+    ],
+  },
+];
 
 export const Home = () => {
   //states
@@ -59,6 +90,7 @@ export const Home = () => {
           isLoading={isLoading || isFetching}
           filter={filter}
           setFilter={setFilter}
+          filterGroups={filterGroups}
         />
       </S.ActionsContainer>
 
