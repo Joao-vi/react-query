@@ -36,12 +36,12 @@ export const CharacterCard = (props: CharacterCardProps) => {
 
         <div>
           <S.SubTitle>Last known location:</S.SubTitle>
-          <span>{origin.name}</span>
+          <span>{location.name}</span>
         </div>
 
         <div>
           <S.SubTitle>First seen in:</S.SubTitle>
-          <span>{episode[0]}</span>
+          <span>{origin.name}</span>
         </div>
       </S.Content>
     </S.Wrapper>

@@ -6,6 +6,8 @@ interface IStatus {
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+    cursor: pointer;
+
     width: 43rem;
     height: 16rem;
 
@@ -27,6 +29,13 @@ export const Wrapper = styled.div`
       100% {
         opacity: 1;
       }
+    }
+
+    transition: all 200ms ease;
+
+    &:hover {
+      transform: translateY(-0.4rem);
+      box-shadow: 0px 4px 11px -5px ${theme.colors.orange};
     }
   `}
 `;
