@@ -44,7 +44,6 @@ ${({ theme }) => css`
     color: ${theme.colors.white};
     background-color: transparent;
   }
-
   a {
     text-decoration: none;
   }

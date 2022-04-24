@@ -25,6 +25,15 @@ export const Wrapper = styled.button<IWrapper>`
       font-weight: ${theme.font.weights[500]};
     }
 
+    &:disabled {
+      background: linear-gradient(
+        -90deg,
+        #e7edd145 0%,
+        #f8f8f861 50%,
+        #e7edf138 100%
+      );
+    }
+
     ${isLoading ? theme.animations.isLoading() : theme.animations.hoverFocus()}
   `}
 `;

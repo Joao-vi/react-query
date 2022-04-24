@@ -2,6 +2,12 @@ import { useQuery } from "react-query";
 import { IData, IFilterCharacter, IResponse } from "types/rick-morty-api";
 import { api } from "./api";
 
+const initialData: IData = {
+  error: "",
+  info: {},
+  results: [],
+};
+
 export const fecthCharacter = async (
   name: string,
   filter: IFilterCharacter
@@ -14,7 +20,7 @@ export const fecthCharacter = async (
     return { ...data, error: "" } as IData;
   } catch (error) {
     if (error.response.status === 404) {
-      return { data: {}, error: name } as IData;
+      return { error: name } as IData;
     }
   }
 };
@@ -27,5 +33,6 @@ export const useCharacter = (
     queryFn: () => fecthCharacter(name, filter),
     refetchOnWindowFocus: false,
     keepPreviousData: true,
+    initialData,
   });
 };

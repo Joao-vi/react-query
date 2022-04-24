@@ -10,26 +10,29 @@ export interface IFilterGroup {
 }
 interface FilterCharacterProps {
   isLoading: boolean;
+  isDisable: boolean;
   filter: IFilterCharacter;
   setFilter: Dispatch<IFilterCharacter>;
   filterGroups: IFilterGroup[];
 }
 
 export const FilterCharacter = (props: FilterCharacterProps) => {
-  const { isLoading, setFilter, filter, filterGroups } = props;
+  const { isLoading, setFilter, filter, filterGroups, isDisable } = props;
 
   return (
     <S.Wrapper>
       {filterGroups.map(({ title, key, options }) => (
         <S.FilterGroup key={title}>
           <span className="title-group">{title}</span>
+
           {options.map(({ value, label }) => (
             <FilterElement
               key={value}
               isLoading={isLoading}
               isSelected={value === filter[key]}
+              isDisable={isDisable}
               onClick={() =>
-                setFilter({ [key]: filter[key] === value ? null : value })
+                setFilter({ [key]: filter[key] === value ? "" : value })
               }
             >
               {label}

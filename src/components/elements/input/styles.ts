@@ -37,7 +37,19 @@ const padding = {
 export const Input = styled.input<IWrapperIcon>`
   ${({ iconPlacement, hasIcon }) => css`
     width: 100%;
-    margin: 1rem;
+    padding: 1rem;
+
+    border-radius: inherit;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
+    }
+
+    &[data-autocompleted] {
+      background-color: transparent !important;
+      font: inherit !important;
+    }
 
     ${hasIcon && padding[iconPlacement]};
   `}

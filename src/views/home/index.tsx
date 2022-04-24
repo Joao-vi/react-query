@@ -61,7 +61,7 @@ export const Home = () => {
     page: 1,
   });
 
-  const [name, setName] = useState<string>(undefined);
+  const [name, setName] = useState<string>("");
   const debouncedName = useDebounce(name);
 
   // Fetchs
@@ -88,6 +88,7 @@ export const Home = () => {
         />
         <FilterCharacter
           isLoading={isLoading || isFetching}
+          isDisable={!!data.error}
           filter={filter}
           setFilter={setFilter}
           filterGroups={filterGroups}
