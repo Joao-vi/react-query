@@ -4,7 +4,7 @@ import { InputProps } from ".";
 
 type IWrapperIcon = Pick<InputProps, "iconPlacement" | "hasIcon">;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.label`
   ${({ theme }) => css`
     cursor: text;
     position: relative;
@@ -15,7 +15,6 @@ export const Wrapper = styled.div`
     display: flex;
 
     border-radius: 4px;
-    padding: 1rem;
 
     background-color: ${theme.colors.black500};
 
@@ -38,6 +37,7 @@ const padding = {
 export const Input = styled.input<IWrapperIcon>`
   ${({ iconPlacement, hasIcon }) => css`
     width: 100%;
+    margin: 1rem;
 
     ${hasIcon && padding[iconPlacement]};
   `}

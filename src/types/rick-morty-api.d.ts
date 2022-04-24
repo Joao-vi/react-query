@@ -13,6 +13,9 @@ export interface ICharacter {
   created: Date;
 }
 
+export interface IData extends IResponse {
+  error?: string;
+}
 export interface IResponse {
   info?: IInfo;
   results?: ICharacter[];

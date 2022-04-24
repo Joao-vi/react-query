@@ -11,7 +11,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input = (props: InputProps) => {
   const { iconPlacement = "right", hasIcon = false, Icon, ...rest } = props;
   return (
-    <S.Wrapper>
+    <S.Wrapper htmlFor={rest.id}>
       {hasIcon && Icon && (
         <S.WrapperIcon iconPlacement={iconPlacement}>
           <Icon />

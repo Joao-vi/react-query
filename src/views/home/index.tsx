@@ -69,11 +69,23 @@ export const Home = () => {
           ))}
         </S.ContainerCards>
       ) : (
-        <S.ContainerCards>
-          {data?.results?.map((character, index) => (
-            <CharacterCard delay={index} key={character.id} {...character} />
-          ))}
-        </S.ContainerCards>
+        <>
+          {!!data?.error ? (
+            <h2 className="warning-message">
+              Character <span className="orange">{data.error}</span> not found.
+            </h2>
+          ) : (
+            <S.ContainerCards>
+              {data?.results?.map((character, index) => (
+                <CharacterCard
+                  delay={index}
+                  key={character.id}
+                  {...character}
+                />
+              ))}
+            </S.ContainerCards>
+          )}
+        </>
       )}
 
       {!!data?.info && data.info.pages > 1 && (

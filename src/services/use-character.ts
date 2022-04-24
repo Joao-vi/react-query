@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { IFilterCharacter, IResponse } from "types/rick-morty-api";
+import { IData, IFilterCharacter, IResponse } from "types/rick-morty-api";
 import { api } from "./api";
 
 export const fecthCharacter = async (
@@ -7,13 +7,15 @@ export const fecthCharacter = async (
   filter: IFilterCharacter
 ) => {
   try {
-    const { data, status } = await api.get("/character", {
+    const { data } = await api.get("/character", {
       params: { name, ...filter },
     });
 
-    return data as IResponse;
+    return { ...data, error: "" } as IData;
   } catch (error) {
-    console.log("Some error has ocourred at fetchCharacter", error);
+    if (error.response.status === 404) {
+      return { data: {}, error: name } as IData;
+    }
   }
 };
 

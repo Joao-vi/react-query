@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Header = styled.header`
   height: 20rem;
@@ -7,13 +7,24 @@ export const Header = styled.header`
 `;
 
 export const Content = styled.article`
-  padding-top: 6rem;
-  padding-bottom: 3rem;
+  ${({ theme }) => css`
+    padding-top: 6rem;
+    padding-bottom: 3rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .orange {
+      color: ${theme.colors.orange};
+    }
+
+    .warning-message {
+      font-size: 1.8rem;
+      font-weight: ${theme.font.weights[300]};
+    }
+  `}
 `;
 
 export const Title = styled.h1`
