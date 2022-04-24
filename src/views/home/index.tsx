@@ -82,7 +82,7 @@ export const Home = () => {
           placeholder="Search for a name"
           id="search-name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value.trim())}
           hasIcon
           Icon={IoSearchOutline}
         />

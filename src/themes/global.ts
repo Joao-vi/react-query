@@ -47,5 +47,24 @@ ${({ theme }) => css`
   a {
     text-decoration: none;
   }
+
+  // Scrollbar styles
+  /* width */
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: ${theme.colors.black900};
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${theme.colors.gray};
+
+    border-radius: 1rem;
+  }
+  // -------------------------
 `}
 `;
