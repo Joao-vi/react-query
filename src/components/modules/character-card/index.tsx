@@ -3,7 +3,7 @@ import { ICharacter } from "types/rick-morty-api";
 import * as S from "./styles";
 
 type CharacterCardProps = {
-  basTime?: number; //ms
+  baseTime?: number; //ms
   delay?: number;
 } & Partial<ICharacter>;
 
@@ -18,7 +18,7 @@ export const CharacterCard = (props: CharacterCardProps) => {
     episode,
     origin,
     delay = 1,
-    basTime = 50,
+    baseTime = 50,
   } = props;
 
   return (
