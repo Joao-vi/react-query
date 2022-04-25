@@ -43,3 +43,11 @@ export interface IFilterCharacter {
   status?: "alive" | "dead" | "unknown";
   gender?: "female" | "male" | "genderless" | "unknown";
 }
+
+/*
+  origin: IOrigin;
+  location: ILocation;
+  image: string;
+  episode: string[];
+  url: string;
+*/

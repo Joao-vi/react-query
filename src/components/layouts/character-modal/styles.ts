@@ -65,4 +65,6 @@ export const WrapperAvatar = styled.div`
   `}
 `;
 
-export const Name = styled.h1``;
+export const Name = styled.h1`
+  font-size: 3rem;
+`;

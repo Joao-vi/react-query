@@ -10,7 +10,7 @@ export const CharacterModal = () => {
           <S.WrapperAvatar>
             <S.Avatar src="/images/character.jpeg" alt="Character avatar." />
           </S.WrapperAvatar>
-          <h1>Rick Sanches</h1>
+          <S.Name>Rick Sanches</S.Name>
         </S.Wrapper>
       </S.Overlay>
     </InPortal>
