@@ -30,7 +30,7 @@ ${({ theme }) => css`
     font-size: 62.5%; // 1rem === 10px
 
     @media (max-width: 760px) {
-      font-size: 50%; // 1rem === 10px
+      font-size: 55%;
     }
   }
 

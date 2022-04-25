@@ -14,7 +14,7 @@ import {
   IFilterGroup,
 } from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
-import { Pagination } from "components/layouts";
+import { CharacterModal, InPortal, Pagination } from "components/layouts";
 
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 
@@ -130,6 +130,8 @@ export const Home = () => {
           sibling={2}
         />
       )}
+
+      <CharacterModal />
     </S.Content>
   );
 };

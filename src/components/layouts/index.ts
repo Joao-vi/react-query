@@ -1,4 +1,5 @@
 //appendHere
+export * from "./character-modal";
 export * from "./in-portal";
 export * from "./footer";
 export * from "./pagination";
