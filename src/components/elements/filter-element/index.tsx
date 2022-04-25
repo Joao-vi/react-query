@@ -1,18 +1,30 @@
-import { Dispatch, SetStateAction } from "react";
+import { Colors } from "types/styled-components";
 import * as S from "./styles";
 
-interface IFilterElement {
-  isLoading: boolean;
+export interface IFilterElement {
+  isLoading?: boolean;
   isDisable?: boolean;
   children: string;
   isSelected: boolean;
+  bgColor?: Colors;
+  bgColorSelected?: Colors;
   onClick: () => void;
 }
 
 export const FilterElement = (props: IFilterElement) => {
-  const { children, isLoading, isSelected, isDisable = false, onClick } = props;
+  const {
+    children,
+    isSelected,
+    isLoading = false,
+    isDisable = false,
+    bgColor = "black500",
+    bgColorSelected = "orange",
+    onClick,
+  } = props;
   return (
     <S.Wrapper
+      bgColor={bgColor}
+      bgColorSelected={bgColorSelected}
       disabled={isDisable}
       onClick={isDisable ? undefined : onClick}
       isSelected={isSelected}

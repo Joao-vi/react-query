@@ -1,11 +1,10 @@
 import styled, { css } from "styled-components";
 
-interface IWrapper {
-  isSelected: boolean;
-  isLoading: boolean;
-}
+import { IFilterElement } from ".";
+
+type IWrapper = Omit<IFilterElement, "onClick" | "isDisable" | "children">;
 export const Wrapper = styled.button<IWrapper>`
-  ${({ theme, isSelected, isLoading }) => css`
+  ${({ theme, isSelected, isLoading, bgColor, bgColorSelected }) => css`
     cursor: pointer;
     user-select: none;
 
@@ -18,8 +17,8 @@ export const Wrapper = styled.button<IWrapper>`
     border-radius: 4px;
 
     background-color: ${isSelected
-      ? theme.colors.orange
-      : theme.colors.black500};
+      ? theme.colors[bgColorSelected]
+      : theme.colors[bgColor]};
 
     > span {
       font-weight: ${theme.font.weights[500]};

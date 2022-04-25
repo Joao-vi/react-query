@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: center;
-
     position: relative;
 
     max-width: 60rem;
@@ -17,6 +16,10 @@ export const Wrapper = styled.div`
 
     background-color: ${theme.colors.black500};
     border-radius: 1rem;
+
+    @media (max-width: 455px) {
+      max-height: 46rem;
+    }
   `}
 `;
 
@@ -67,4 +70,34 @@ export const WrapperAvatar = styled.div`
 
 export const Name = styled.h1`
   font-size: 3rem;
+`;
+
+export const Header = styled.header`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const ContentContainer = styled.main`
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(15.5rem, 20rem));
+  justify-content: center;
+  gap: 2rem;
+
+  overflow: auto;
+  padding: 1rem;
+`;
+
+export const Body = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
