@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   gap: 0.5rem;
 
-  height: 7rem;
+  height: 5rem;
 `;
 
 export const Label = styled.h2`
@@ -27,6 +27,7 @@ export const Content = styled.span`
     border-radius: 1rem;
     padding: 1.5rem 0rem;
 
+    font-size: 1.7rem;
     background-color: ${theme.colors.black600};
     color: ${theme.colors.white200};
   `}

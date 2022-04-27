@@ -31,7 +31,7 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 1rem 2rem;
+  padding: 8.6rem 2rem 1rem 2rem;
 
   background-color: #000000b0;
 `;
@@ -88,10 +88,10 @@ export const ContentContainer = styled.main`
   display: grid;
   grid-template-columns: repeat(2, minmax(15.5rem, 20rem));
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 
   overflow: auto;
-  padding: 1rem;
+  padding: 1rem 0rem;
 `;
 
 export const Body = styled.div`

@@ -1,4 +1,4 @@
-import { ContentCard } from "../content-card/indext";
+import { ContentCard } from "../content-card/index";
 
 export const InfoSection = () => (
   <>

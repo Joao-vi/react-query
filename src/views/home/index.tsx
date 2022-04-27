@@ -1,20 +1,20 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
+import * as S from "./styles";
+
 import { useDebounce } from "hooks/use-debounce";
 import { useCharacter } from "services/use-character";
 import { IFilterCharacter } from "types/rick-morty-api";
 
-import * as S from "./styles";
-
 import { RickHead, Input } from "components/elements";
+import { CharacterModal, Pagination } from "components/layouts";
 import {
   CharacterCard,
   FilterCharacter,
   IFilterGroup,
 } from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
-import { CharacterModal, InPortal, Pagination } from "components/layouts";
 
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 
@@ -60,9 +60,10 @@ export const Home = () => {
     gender: null,
     page: 1,
   });
-
   const [name, setName] = useState<string>("");
   const debouncedName = useDebounce(name);
+
+  const [isOpen, toggle] = useReducer((state) => !state, false);
 
   // Fetchs
   const { data, isLoading, isFetching } = useCharacter(debouncedName, {
@@ -112,6 +113,7 @@ export const Home = () => {
             <S.ContainerCards>
               {data?.results?.map((character, index) => (
                 <CharacterCard
+                  toggle={toggle}
                   delay={index}
                   key={character.id}
                   {...character}
@@ -132,7 +134,7 @@ export const Home = () => {
         />
       )}
 
-      <CharacterModal />
+      <CharacterModal isOpen={isOpen} />
     </S.Content>
   );
 };
