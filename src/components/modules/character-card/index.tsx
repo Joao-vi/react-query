@@ -5,7 +5,7 @@ import * as S from "./styles";
 type CharacterCardProps = {
   baseTime?: number; //ms
   delay?: number;
-  toggle: () => void;
+  onClick: () => void;
 } & Partial<ICharacter>;
 
 export const CharacterCard = (props: CharacterCardProps) => {
@@ -20,11 +20,11 @@ export const CharacterCard = (props: CharacterCardProps) => {
     origin,
     delay = 1,
     baseTime = 50,
-    toggle,
+    onClick,
   } = props;
 
   return (
-    <S.Wrapper onClick={toggle}>
+    <S.Wrapper onClick={onClick}>
       <S.Img src={image} alt="Some character." />
 
       <S.Content>

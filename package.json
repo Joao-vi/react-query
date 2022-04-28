@@ -20,7 +20,8 @@
     "react-icons": "^4.3.1",
     "react-query": "^3.34.16",
     "styled-components": "^5.3.3",
-    "use-media": "^1.4.0"
+    "use-media": "^1.4.0",
+    "zustand": "^4.0.0-rc.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

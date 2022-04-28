@@ -16,6 +16,7 @@ import {
 } from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
 import { useDisclosure } from "hooks/use-disclosure";
+import { characterStore } from "store/character-store";
 
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 
@@ -72,6 +73,10 @@ export const Home = () => {
   // Hooks
   const modalCharacter = useDisclosure();
 
+  const setPickedCharacter = characterStore(
+    (state) => state.setPickedCharacter
+  );
+
   useEffect(() => {
     setFilter({ page: 1 });
   }, [filter.gender, filter.status, debouncedName]);
@@ -114,7 +119,10 @@ export const Home = () => {
             <S.ContainerCards>
               {data?.results?.map((character, index) => (
                 <CharacterCard
-                  toggle={modalCharacter.open}
+                  onClick={() => {
+                    setPickedCharacter(character);
+                    modalCharacter.open();
+                  }}
                   delay={index}
                   key={character.id}
                   {...character}
