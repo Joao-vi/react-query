@@ -3,6 +3,11 @@ import styled, { css } from "styled-components";
 interface IWrapper {
   isOpen: boolean;
 }
+
+interface IContentContainer {
+  isSelected: boolean;
+}
+
 export const Wrapper = styled.div<IWrapper>`
   ${({ theme, isOpen }) => css`
     display: flex;
@@ -97,17 +102,35 @@ export const Header = styled.header`
   gap: 0.5rem;
 `;
 
-export const ContentContainer = styled.main`
-  width: 100%;
-  height: 100%;
+export const ContentContainer = styled.main<IContentContainer>`
+  ${({ isSelected }) => css`
+    width: 100%;
+    height: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(2, minmax(15.5rem, 20rem));
-  justify-content: center;
-  gap: 1rem;
+    grid-template-columns: repeat(2, minmax(15.5rem, 20rem));
+    justify-content: center;
+    gap: 1rem;
 
-  overflow: auto;
-  padding: 1rem 0rem;
+    overflow: auto;
+    padding: 1rem 0rem;
+
+    opacity: 0;
+    transform: translateY(-10%);
+    display: none;
+
+    @keyframes showUpAnimation {
+      100% {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+
+    ${isSelected &&
+    css`
+      display: grid;
+      animation: showUpAnimation 300ms cubic-bezier(0, 0, 0.5, 2) forwards;
+    `}
+  `}
 `;
 
 export const Body = styled.div`

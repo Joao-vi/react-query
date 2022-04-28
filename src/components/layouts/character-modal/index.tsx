@@ -6,10 +6,17 @@ import { InPortal } from "components/layouts";
 import { Sections } from "./components/sections";
 import { InfoSection } from "./components/info-section";
 import { characterStore } from "store/character-store";
+import { LocationSection } from "./components/location-section";
 
 interface ICharacterModal {
   isOpen: boolean;
 }
+
+const sections = [
+  { id: "info", compo: InfoSection },
+  { id: "location", compo: LocationSection },
+];
+
 export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
   (props, ref) => {
     const { isOpen } = props;
@@ -37,9 +44,17 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
                 />
               </S.Header>
 
-              <S.ContentContainer>
-                <InfoSection />
-              </S.ContentContainer>
+              {sections.map((section) => {
+                const Component = section.compo;
+                return (
+                  <S.ContentContainer
+                    key={section.id}
+                    isSelected={section.id === currentSection}
+                  >
+                    <Component />
+                  </S.ContentContainer>
+                );
+              })}
             </S.Body>
           </S.Wrapper>
         </S.Overlay>
