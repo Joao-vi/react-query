@@ -22,19 +22,10 @@ export const useDisclosure = () => {
       }
     };
 
-    const handleCheckWhell = (event: any) => {
-      console.log("event - Wheel", event);
-    };
-
     document.addEventListener("mousedown", handleCheckClick);
-    document.addEventListener("wheel", handleCheckWhell);
 
-    return () => {
-      removeEventListener("whell", handleCheckWhell);
-      return removeEventListener("mousedown", handleCheckClick);
-    };
+    return () => removeEventListener("mousedown", handleCheckClick);
   }, [close, isOpen]);
 
-  console.log("IsOpen", isOpen);
   return { open, close, toggle, isOpen, refElement };
 };

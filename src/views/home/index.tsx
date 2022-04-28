@@ -76,7 +76,6 @@ export const Home = () => {
     setFilter({ page: 1 });
   }, [filter.gender, filter.status, debouncedName]);
 
-  console.log("asdas", modalCharacter);
   return (
     <S.Content>
       <RickHead />
