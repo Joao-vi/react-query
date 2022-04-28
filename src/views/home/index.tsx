@@ -15,6 +15,7 @@ import {
   IFilterGroup,
 } from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
+import { useDisclosure } from "hooks/use-disclosure";
 
 const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 
@@ -63,18 +64,19 @@ export const Home = () => {
   const [name, setName] = useState<string>("");
   const debouncedName = useDebounce(name);
 
-  const [isOpen, toggle] = useReducer((state) => !state, false);
-
   // Fetchs
   const { data, isLoading, isFetching } = useCharacter(debouncedName, {
     ...filter,
   });
 
+  // Hooks
+  const modalCharacter = useDisclosure();
+
   useEffect(() => {
     setFilter({ page: 1 });
   }, [filter.gender, filter.status, debouncedName]);
 
-  console.log(data);
+  console.log("asdas", modalCharacter);
   return (
     <S.Content>
       <RickHead />
@@ -97,7 +99,7 @@ export const Home = () => {
         />
       </S.ActionsContainer>
 
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <S.ContainerCards>
           {mockArray.map((_, index) => (
             <CharacterCardLoading key={index} />
@@ -113,7 +115,7 @@ export const Home = () => {
             <S.ContainerCards>
               {data?.results?.map((character, index) => (
                 <CharacterCard
-                  toggle={toggle}
+                  toggle={modalCharacter.open}
                   delay={index}
                   key={character.id}
                   {...character}
@@ -134,7 +136,10 @@ export const Home = () => {
         />
       )}
 
-      <CharacterModal isOpen={isOpen} />
+      <CharacterModal
+        ref={modalCharacter.refElement}
+        isOpen={modalCharacter.isOpen}
+      />
     </S.Content>
   );
 };

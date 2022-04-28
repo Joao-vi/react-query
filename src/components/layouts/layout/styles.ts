@@ -5,5 +5,5 @@ export const Wrapper = styled.main`
   margin: 0 auto;
   padding: 0 2rem;
 
-  min-height: 100vh;
+  /* min-height: 100vh; */
 `;

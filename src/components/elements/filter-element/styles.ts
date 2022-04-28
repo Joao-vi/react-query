@@ -8,10 +8,6 @@ export const Wrapper = styled.button<IWrapper>`
     cursor: pointer;
     user-select: none;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     padding: 1rem 4rem;
 
     border-radius: 4px;
@@ -20,9 +16,7 @@ export const Wrapper = styled.button<IWrapper>`
       ? theme.colors[bgColorSelected]
       : theme.colors[bgColor]};
 
-    > span {
-      font-weight: ${theme.font.weights[500]};
-    }
+    font-weight: ${theme.font.weights[500]};
 
     &:disabled {
       background: linear-gradient(

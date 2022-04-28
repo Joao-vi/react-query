@@ -37,6 +37,10 @@ export const Wrapper = styled.div`
       transform: translateY(-0.4rem);
       box-shadow: 0px 4px 11px -5px ${theme.colors.orange};
     }
+
+    &:active {
+      transform: translateY(0rem);
+    }
   `}
 `;
 

@@ -32,6 +32,7 @@ export const Sections = ({ currentSection, setCurrentSection }: ISections) => {
           key={value}
           isSelected={value === currentSection}
           onClick={() => setCurrentSection(value)}
+          style={{ padding: "1rem 2rem" }}
         >
           {label}
         </FilterElement>

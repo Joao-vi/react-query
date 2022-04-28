@@ -1,7 +1,10 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
+interface IWrapper {
+  isOpen: boolean;
+}
+export const Wrapper = styled.div<IWrapper>`
+  ${({ theme, isOpen }) => css`
     display: flex;
     justify-content: center;
     position: relative;
@@ -12,10 +15,23 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
 
-    padding: 4rem 0 1rem 0rem;
+    padding: 4rem 1rem 1rem 1rem;
 
     background-color: ${theme.colors.black500};
     border-radius: 1rem;
+
+    transition: all 300ms cubic-bezier(0.5, -1, 0.1, 1.5);
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10%);
+
+    ${isOpen &&
+    css`
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    `}
 
     @media (max-width: 455px) {
       max-height: 46rem;
@@ -24,16 +40,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Overlay = styled.div`
-  position: absolute;
-  inset: 0 0 0 0;
+  width: 100%;
+  height: 100%;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   padding: 8.6rem 2rem 1rem 2rem;
 
-  background-color: #000000b0;
+  transition: background-color 200ms ease;
 `;
 
 export const Avatar = styled.img`

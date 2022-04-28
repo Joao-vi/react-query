@@ -9,6 +9,7 @@ export interface IFilterElement {
   bgColor?: Colors;
   bgColorSelected?: Colors;
   onClick: () => void;
+  style?: Record<string, string>;
 }
 
 export const FilterElement = (props: IFilterElement) => {
@@ -20,9 +21,11 @@ export const FilterElement = (props: IFilterElement) => {
     bgColor = "black500",
     bgColorSelected = "orange",
     onClick,
+    style,
   } = props;
   return (
     <S.Wrapper
+      style={style}
       bgColor={bgColor}
       bgColorSelected={bgColorSelected}
       disabled={isDisable}
@@ -30,7 +33,7 @@ export const FilterElement = (props: IFilterElement) => {
       isSelected={isSelected}
       isLoading={isLoading}
     >
-      <span>{children}</span>
+      {children}
     </S.Wrapper>
   );
 };
