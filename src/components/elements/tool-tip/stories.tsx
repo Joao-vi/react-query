@@ -8,5 +8,11 @@ export default {
 } as ComponentMeta<typeof ToolTip>;
 
 export const Default: ComponentStory<typeof ToolTip> = (args) => (
-  <ToolTip {...args} />
+  <ToolTip label={args.label}>
+    <button>Hover me </button>
+  </ToolTip>
 );
+
+Default.args = {
+  label: "",
+};
