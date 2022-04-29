@@ -1,4 +1,5 @@
 //appendHere
+export * from "./tool-tip";
 export * from "./fade-in";
 export * from "./page-element";
 export * from "./filter-element";
