@@ -1,61 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import * as S from "./styles";
 
 import { InPortal } from "components/layouts";
-import { Sections } from "./components/sections";
+import { TabNav } from "./components/tab-nav";
 import { InfoSection } from "./components/info-section";
 import { characterStore } from "store/character-store";
 import { LocationSection } from "./components/location-section";
+import { TabContent } from "./components/tab-content";
 
 interface ICharacterModal {
   isOpen: boolean;
 }
 
-const sections = [
-  { id: "info", compo: InfoSection },
-  { id: "location", compo: LocationSection },
-];
-
 export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
   (props, ref) => {
     const { isOpen } = props;
-    const [currentSection, setCurrentSection] = React.useState("info");
+    const [currentIndex, setCurrentIndex] = React.useState(0);
 
     const backgroundColor = isOpen ? "#0000004a" : "transparent";
 
     const characterData = characterStore((state) => state.pickedCharacter);
 
+    useEffect(() => {
+      setCurrentIndex(0);
+    }, [isOpen, setCurrentIndex]);
+
     return (
       <InPortal id="character-portal">
         <S.Overlay style={{ backgroundColor }}>
           <S.Wrapper ref={ref} isOpen={isOpen}>
-            <S.WrapperAvatar>
-              <S.Avatar src={characterData?.image} alt={CharacterModal?.name} />
-            </S.WrapperAvatar>
+            {characterData && (
+              <>
+                <S.WrapperAvatar>
+                  <S.Avatar
+                    src={characterData?.image}
+                    alt={CharacterModal?.name}
+                  />
+                </S.WrapperAvatar>
 
-            <S.Body>
-              <S.Header>
-                <S.Name>{characterData?.name}</S.Name>
+                <S.Body>
+                  <S.Header>
+                    <S.Name>{characterData?.name}</S.Name>
 
-                <Sections
-                  currentSection={currentSection}
-                  setCurrentSection={setCurrentSection}
-                />
-              </S.Header>
+                    <TabNav
+                      currentIndex={currentIndex}
+                      setCurrentIndex={setCurrentIndex}
+                    />
+                  </S.Header>
 
-              {sections.map((section) => {
-                const Component = section.compo;
-                return (
-                  <S.ContentContainer
-                    key={section.id}
-                    isSelected={section.id === currentSection}
-                  >
-                    <Component />
-                  </S.ContentContainer>
-                );
-              })}
-            </S.Body>
+                  <TabContent currentIndex={currentIndex}>
+                    <S.ContentContainer>
+                      <InfoSection />
+                    </S.ContentContainer>
+
+                    <S.ContentContainer>
+                      <LocationSection />
+                    </S.ContentContainer>
+                  </TabContent>
+                </S.Body>
+              </>
+            )}
           </S.Wrapper>
         </S.Overlay>
       </InPortal>

@@ -1,3 +1,4 @@
+import { ContentContainer } from "../../styles";
 import { ContentCard } from "../content-card";
 
 export const LocationSection = () => (

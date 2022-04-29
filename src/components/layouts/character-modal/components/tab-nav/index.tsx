@@ -3,35 +3,36 @@ import * as S from "./styles";
 import { FilterElement } from "components/elements";
 import { Dispatch, SetStateAction, useState } from "react";
 
-interface ISections {
-  currentSection: string;
-  setCurrentSection: Dispatch<SetStateAction<String>>;
+interface ITabNav {
+  currentIndex: number;
+  setCurrentIndex: Dispatch<SetStateAction<number>>;
 }
 
 const sections = [
   {
     label: "Info",
-    value: "info",
+    value: 0,
   },
   {
     label: "Location",
-    value: "location",
+    value: 1,
   },
   {
     label: "Episodeos",
-    value: "episodeos",
+    value: 2,
   },
 ];
 
-export const Sections = ({ currentSection, setCurrentSection }: ISections) => {
+export const TabNav = ({ currentIndex, setCurrentIndex }: ITabNav) => {
+  console.log("cdas", currentIndex);
   return (
     <S.Wrapper>
       {sections.map(({ label, value }) => (
         <FilterElement
           bgColor="black600"
           key={value}
-          isSelected={value === currentSection}
-          onClick={() => setCurrentSection(value)}
+          isSelected={value === currentIndex}
+          onClick={() => setCurrentIndex(value)}
           style={{ padding: "1rem 2rem" }}
         >
           {label}

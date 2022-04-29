@@ -5,7 +5,7 @@ interface IWrapper {
 }
 
 interface IContentContainer {
-  isSelected: boolean;
+  isSelected?: boolean;
 }
 
 export const Wrapper = styled.div<IWrapper>`
@@ -102,8 +102,8 @@ export const Header = styled.header`
   gap: 0.5rem;
 `;
 
-export const ContentContainer = styled.main<IContentContainer>`
-  ${({ isSelected }) => css`
+export const ContentContainer = styled.div<IContentContainer>`
+  ${({ isSelected = false }) => css`
     width: 100%;
     height: 100%;
 
