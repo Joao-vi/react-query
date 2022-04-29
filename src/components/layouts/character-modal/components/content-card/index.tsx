@@ -1,5 +1,7 @@
 import * as S from "./styles";
 
+import { ToolTip } from "components/elements";
+
 interface IContentCard {
   label: string;
   value: string;
@@ -11,7 +13,9 @@ export const ContentCard = ({ label, value }: IContentCard) => {
   return (
     <S.Wrapper>
       <S.Label>{label}</S.Label>
-      <S.Content>{fValue}</S.Content>
+      <ToolTip label={value} shouldActive={shouldFormat}>
+        <S.Content>{fValue}</S.Content>
+      </ToolTip>
     </S.Wrapper>
   );
 };

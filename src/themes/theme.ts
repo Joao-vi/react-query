@@ -58,6 +58,7 @@ export default {
     black900: "#131316",
     white: "#ffffffeb",
     white200: "#EDF2F7",
+    white50: "#edf2f730",
     gray: "#7c7d81",
     orange: "#FFA200",
     seal: "#88ccca",

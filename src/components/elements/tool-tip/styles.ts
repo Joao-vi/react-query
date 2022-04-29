@@ -4,7 +4,7 @@ import { IToolTip } from ".";
 
 const placements = {
   bottom: (state: "show" | "hidden") => css`
-    top: ${state === "show" ? "130%" : "90%"};
+    top: ${state === "show" ? "100%" : "90%"};
   `,
   top: (state: "show" | "hidden") => css`
     bottom: ${state === "show" ? "130%" : "90%"};
@@ -22,6 +22,7 @@ type TProps = {
 };
 export const Content = styled.div<TProps>`
   ${({ theme, placement }) => css`
+    z-index: 2;
     position: absolute;
 
     width: max-content;
@@ -33,6 +34,7 @@ export const Content = styled.div<TProps>`
 
     border-radius: 0.5rem;
     box-shadow: ${theme.shadows.sm};
+    border: 1px solid ${theme.colors.white50};
 
     transition: all 300ms cubic-bezier(0.5, -1, 0.1, 1.5);
 
@@ -42,7 +44,7 @@ export const Content = styled.div<TProps>`
   `}
 `;
 export const Wrapper = styled.div<TProps>`
-  ${({ theme, placement }) => css`
+  ${({ placement }) => css`
     position: relative;
     display: flex;
     justify-content: center;
