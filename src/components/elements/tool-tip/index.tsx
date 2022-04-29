@@ -1,15 +1,20 @@
 import React from "react";
 import * as S from "./styles";
 
-interface IToolTip {
-  children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+export interface IToolTip {
+  children: JSX.Element | React.ReactNode;
   label: string;
+  placement?: "top" | "bottom" | "left" | "right";
 }
-export const ToolTip = ({ children, label }: IToolTip) => {
+export const ToolTip = ({
+  children,
+  label,
+  placement = "bottom",
+}: IToolTip) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper placement={placement}>
       {children}
-      <S.Content>
+      <S.Content placement={placement}>
         <span>{label}</span>
       </S.Content>
     </S.Wrapper>

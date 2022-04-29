@@ -1,13 +1,27 @@
 import styled, { css } from "styled-components";
 
-const placement = {
-  bottom: () => css`
-    top: 9;
+import { IToolTip } from ".";
+
+const placements = {
+  bottom: (state: "show" | "hidden") => css`
+    top: ${state === "show" ? "130%" : "90%"};
+  `,
+  top: (state: "show" | "hidden") => css`
+    bottom: ${state === "show" ? "130%" : "90%"};
+  `,
+  right: (state: "show" | "hidden") => css`
+    left: ${state === "show" ? "130%" : "90%"};
+  `,
+  left: (state: "show" | "hidden") => css`
+    right: ${state === "show" ? "130%" : "90%"};
   `,
 };
 
-export const Content = styled.div`
-  ${({ theme }) => css`
+type TProps = {
+  placement: IToolTip["placement"];
+};
+export const Content = styled.div<TProps>`
+  ${({ theme, placement }) => css`
     position: absolute;
 
     width: max-content;
@@ -22,27 +36,24 @@ export const Content = styled.div`
 
     transition: all 300ms cubic-bezier(0.5, -1, 0.1, 1.5);
 
-    top: 90%;
+    ${placements[placement]("hidden")};
     opacity: 0;
     pointer-events: none;
-
-    &:hover {
-      pointer-events: all;
-      top: 130%;
-      opacity: 1;
-    }
   `}
 `;
-export const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
+export const Wrapper = styled.div<TProps>`
+  ${({ theme, placement }) => css`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  &:hover {
-    ${Content} {
-      top: 130%;
-      opacity: 1;
-      pointer-events: all;
+    &:hover {
+      ${Content} {
+        ${placements[placement]("show")};
+        opacity: 1;
+        pointer-events: all;
+      }
     }
-  }
+  `}
 `;
