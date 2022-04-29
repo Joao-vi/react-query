@@ -45,8 +45,9 @@ export const Wrapper = styled.div<IWrapper>`
 `;
 
 export const Overlay = styled.div`
-  width: 100%;
-  height: 100%;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
 
   display: flex;
   align-items: center;
