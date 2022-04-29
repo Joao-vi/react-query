@@ -7,15 +7,15 @@ import { ICharacter } from "types/rick-morty-api";
 
 interface ICharacterStore {
   pickedCharacter: ICharacter | undefined;
-  favorites: string[];
-  setFavorites: (id: string) => void;
+  favorites: number[];
+  setFavorites: (id: number) => void;
   setPickedCharacter: (character: ICharacter) => void;
 }
 
-export const characterStore = create<ICharacterStore>((set, get) => ({
+export const characterStore = create<ICharacterStore>((set) => ({
   pickedCharacter: undefined,
   favorites: [],
-  setFavorites: (id: string) =>
+  setFavorites: (id: number) =>
     set(({ favorites }) => {
       const { save } = LocalStorageManager();
       const shouldRemove = favorites.includes(id);

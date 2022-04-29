@@ -10,7 +10,7 @@ export default {
 
 export const Default: ComponentStory<typeof Pagination> = (args) => {
   const [current, setCurrent] = useState(1);
-  return <Pagination {...args} current={current} setCurrent={setCurrent} />;
+  return <Pagination {...args} current={current} />;
 };
 
 Default.args = {

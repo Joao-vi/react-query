@@ -22,17 +22,9 @@ export const Default: ComponentStory<typeof FilterElement> = (args) => {
     return () => clearTimeout(handler);
   }, [status]);
 
-  return (
-    <FilterElement
-      {...args}
-      setData={setStatus}
-      data={status}
-      isLoading={isLoading}
-    />
-  );
+  return <FilterElement {...args} isLoading={isLoading} />;
 };
 
 Default.args = {
   children: "Alive",
-  value: "",
 };

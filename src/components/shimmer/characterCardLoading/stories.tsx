@@ -36,5 +36,5 @@ export const Default: ComponentStory<typeof CharacterCardLoading> = (args) => {
     return <CharacterCardLoading {...args} />;
   }
 
-  return <CharacterCard {...cardArgs} />;
+  return <CharacterCard {...cardArgs} onClick={() => {}} />;
 };

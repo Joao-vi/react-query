@@ -1,12 +1,24 @@
+import { ICharacter } from "types/rick-morty-api";
 import { ContentCard } from "../content-card/index";
 
-export const InfoSection = () => (
-  <>
-    <ContentCard label="Status" value="Alive" />
-    <ContentCard label="Species" value="Human" />
-    <ContentCard label="Gender" value="Male" />
-    <ContentCard label="Current Location" value="Mars" />
-    <ContentCard label="Fisrt Seen" value="Earth" />
-    <ContentCard label="Number of Episodeos" value="53" />
-  </>
-);
+type IInfoSection = Omit<
+  ICharacter,
+  "id" | "name" | "image" | "url" | "created"
+>;
+export const InfoSection = (props: IInfoSection) => {
+  const { status, gender, location, origin, species, type, episode } = props;
+  console.log("Type:", type);
+  return (
+    <>
+      <ContentCard label="Status" value={status} />
+      <ContentCard label="Species" value={species} />
+      <ContentCard label="Gender" value={gender} />
+      <ContentCard label="Current Location" value={location.name} />
+      <ContentCard label="Fisrt Seen" value={origin.name} />
+      <ContentCard
+        label="Number of Episodeos"
+        value={episode.length.toString()}
+      />
+    </>
+  );
+};

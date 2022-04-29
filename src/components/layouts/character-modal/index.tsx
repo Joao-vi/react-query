@@ -21,6 +21,7 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
     const backgroundColor = isOpen ? "#0000004a" : "transparent";
 
     const characterData = characterStore((state) => state.pickedCharacter);
+    const setFavorite = characterStore((state) => state.setFavorites);
 
     useEffect(() => {
       setCurrentIndex(0);
@@ -51,7 +52,7 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
 
                   <TabContent currentIndex={currentIndex}>
                     <S.ContentContainer>
-                      <InfoSection />
+                      <InfoSection {...characterData} />
                     </S.ContentContainer>
 
                     <S.ContentContainer>
