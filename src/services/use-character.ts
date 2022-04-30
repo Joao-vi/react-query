@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
-import { IData, IFilterCharacter, IResponse } from "types/rick-morty-api";
+import { IData, IFilterCharacter } from "types/rick-morty-api";
 import { api } from "./api";
 
 const initialData: IData = {
-  error: "",
-  info: {},
-  results: [],
+  error: null,
+  info: null,
+  results: null,
 };
 
 export const fecthCharacter = async (
@@ -17,11 +17,13 @@ export const fecthCharacter = async (
       params: { name, ...filter },
     });
 
-    return { ...data, error: "" } as IData;
-  } catch (error) {
-    if (error.response.status === 404) {
-      return { error: name } as IData;
+    if (data?.results?.lenght < 1) {
+      throw new Error("No results has found.");
     }
+
+    return { ...initialData, ...data } as IData;
+  } catch (error) {
+    return { ...initialData, error: name } as IData;
   }
 };
 

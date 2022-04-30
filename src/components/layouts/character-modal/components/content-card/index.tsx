@@ -13,9 +13,14 @@ export const ContentCard = ({ label, value }: IContentCard) => {
   return (
     <S.Wrapper>
       <S.Label>{label}</S.Label>
-      <ToolTip label={value} shouldActive={shouldFormat}>
-        <S.Content>{fValue}</S.Content>
-      </ToolTip>
+      <S.Content style={{ position: "relative" }}>
+        <ToolTip
+          style={{ fontSize: "1.5rem" }}
+          label={value}
+          shouldActive={shouldFormat}
+        />
+        {fValue}
+      </S.Content>
     </S.Wrapper>
   );
 };

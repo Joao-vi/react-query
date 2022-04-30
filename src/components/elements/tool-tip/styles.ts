@@ -20,6 +20,7 @@ const placements = {
 type TProps = {
   placement: IToolTip["placement"];
 };
+
 export const Content = styled.div<TProps>`
   ${({ theme, placement }) => css`
     z-index: 2;
@@ -43,9 +44,11 @@ export const Content = styled.div<TProps>`
     pointer-events: none;
   `}
 `;
-export const Wrapper = styled.div<TProps>`
+export const PositionContent = styled.div<TProps>`
   ${({ placement }) => css`
-    position: relative;
+    position: absolute;
+    inset: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;

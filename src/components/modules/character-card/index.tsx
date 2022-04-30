@@ -1,3 +1,4 @@
+import { ToolTip } from "components/elements";
 import { ICharacter } from "types/rick-morty-api";
 
 import * as S from "./styles";
@@ -23,13 +24,18 @@ export const CharacterCard = (props: CharacterCardProps) => {
     onClick,
   } = props;
 
+  const fName = name.length > 18 ? name.slice(0, 18) + "..." : false;
   return (
     <S.Wrapper onClick={onClick}>
       <S.Img src={image} alt="Some character." />
 
       <S.Content>
         <div>
-          <S.Title>{name}</S.Title>
+          <S.Title style={{ position: "relative" }}>
+            {fName || name}
+            <ToolTip placement="top" label={name} shouldActive={!!fName} />
+          </S.Title>
+
           <S.Status status={status}>
             <div className={`indicator ${status}`} />
             <span>{`${status} - ${species}`}</span>

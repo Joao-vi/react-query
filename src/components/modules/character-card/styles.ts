@@ -16,8 +16,6 @@ export const Wrapper = styled.div`
     border-radius: 1rem;
     box-shadow: ${theme.shadows.sm};
 
-    overflow: hidden;
-
     background-color: ${theme.colors.black500};
 
     animation: fade-in-animation 200ms ease-in-out forwards;
@@ -48,6 +46,7 @@ export const Img = styled.img`
   width: 150px;
 
   object-fit: cover;
+  border-radius: 1rem 0rem 0rem 1rem;
 `;
 
 export const Content = styled.div`

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-top: auto;
   height: max-content;
   width: 100%;
 

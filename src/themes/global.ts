@@ -8,9 +8,15 @@ ${({ theme }) => css`
     box-sizing: border-box;
   }
 
+  html {
+    height: 100vh;
+  }
+
   body,
   #__next {
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   body {

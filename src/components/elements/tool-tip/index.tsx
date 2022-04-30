@@ -2,25 +2,20 @@ import React from "react";
 import * as S from "./styles";
 
 export interface IToolTip {
-  children: JSX.Element | React.ReactNode;
   label: string;
   placement?: "top" | "bottom" | "left" | "right";
   shouldActive?: boolean;
+  style?: React.CSSProperties;
 }
-export const ToolTip = ({
-  children,
-  label,
-  placement = "bottom",
-  shouldActive = true,
-}: IToolTip) => {
+export const ToolTip = (props: IToolTip) => {
+  const { label, style, placement = "bottom", shouldActive = true } = props;
   return (
-    <S.Wrapper placement={placement}>
-      {children}
+    <S.PositionContent placement={placement}>
       {shouldActive && (
-        <S.Content placement={placement}>
+        <S.Content style={style} placement={placement}>
           <span>{label}</span>
         </S.Content>
       )}
-    </S.Wrapper>
+    </S.PositionContent>
   );
 };
