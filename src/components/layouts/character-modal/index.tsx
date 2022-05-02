@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import * as S from "./styles";
 
-import { InPortal } from "components/layouts";
-
-import { TabNav } from "./components/tab-nav";
-import { InfoSection } from "./components/info-section";
 import { characterStore } from "store/character-store";
-import { LocationSection } from "./components/location-section";
-import { TabContent } from "./components/tab-content";
+
+import { InPortal } from "components/layouts";
+import { TabNav, InfoSection, LocationSection, TabContent } from "./components";
 
 interface ICharacterModal {
   isOpen: boolean;
@@ -25,7 +22,7 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
 
     const setFavorite = characterStore((state) => state.setFavorites);
 
-    useEffect(() => {
+    React.useEffect(() => {
       setCurrentIndex(0);
     }, [isOpen, setCurrentIndex]);
 

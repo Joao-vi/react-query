@@ -1,24 +1,18 @@
-import { useEffect, useReducer, useRef, useState } from "react";
+import React from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
 import * as S from "./styles";
+import { IFilterCharacter } from "types";
 
-import { useDebounce } from "hooks/use-debounce";
-import { useCharacter } from "services/use-character";
-import { IFilterCharacter } from "types/rick-morty-api";
+import { useCharacter } from "services";
+import { useDisclosure, useDebounce } from "hooks";
+import { filterGroups, mockArray } from "constants/index";
 
 import { RickHead, Input } from "components/elements";
 import { CharacterModal, Pagination } from "components/layouts";
-import {
-  CharacterCard,
-  FilterCharacter,
-  IFilterGroup,
-} from "components/modules";
+import { CharacterCard, FilterCharacter } from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
-import { useDisclosure } from "hooks/use-disclosure";
 import { characterStore } from "store/character-store";
-
-const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
 
 const filterReducer = (
   state: IFilterCharacter,
@@ -28,41 +22,14 @@ const filterReducer = (
   ...(typeof update === "function" ? update(state) : update),
 });
 
-const filterGroups: IFilterGroup[] = [
-  {
-    title: "Status",
-    key: "status",
-    options: [
-      { label: "Alive", value: "alive" },
-      { label: "Dead", value: "dead" },
-      {
-        label: "Unknown",
-        value: "unknown",
-      },
-    ],
-  },
-  {
-    title: "Gender",
-    key: "gender",
-    options: [
-      { label: "Male", value: "male" },
-      { label: "Female", value: "female" },
-      {
-        label: "Genderless",
-        value: "genderless",
-      },
-    ],
-  },
-];
-
 export const Home = () => {
   //states
-  const [filter, setFilter] = useReducer(filterReducer, {
+  const [filter, setFilter] = React.useReducer(filterReducer, {
     status: null,
     gender: null,
     page: 1,
   });
-  const [name, setName] = useState<string>("");
+  const [name, setName] = React.useState<string>("");
   const debouncedName = useDebounce(name);
 
   // Fetchs
@@ -77,7 +44,7 @@ export const Home = () => {
     (state) => state.setPickedCharacter
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     setFilter({ page: 1 });
   }, [filter.gender, filter.status, debouncedName]);
 
