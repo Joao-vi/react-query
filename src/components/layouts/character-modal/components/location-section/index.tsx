@@ -28,24 +28,30 @@ export const LocationSection = (props: ILocationSection) => {
     url.replace("https://rickandmortyapi.com/api/location/", "")
   );
 
-  const [currentPage, setCurrenPage] = React.useReducer(handlePaginate, {
+  const [page, setPage] = React.useReducer(handlePaginate, {
     start: 0,
     end: 4,
   });
 
-  // const { data: dataResidents, fetchNextPage } = useResidents(
-  //   data.location.residents.slice(currentPage.start, currentPage.end)
-  // );
-
-  console.log(
-    "Array:",
-    data.location?.residents?.slice(currentPage.start, currentPage.end)
+  const residentsId = React.useMemo(
+    () => data?.location?.residents?.slice(page.start, page.end),
+    [page, data]
   );
+  const { data: dataResidents, fetchNextPage } = useResidents({
+    residentsId,
+    locationId: data?.location.id,
+  });
 
-  console.log("dadas", currentPage);
+  console.log("Residents", dataResidents);
+
   return (
     <>
-      <button onClick={() => setCurrenPage(data.location.residents)}>
+      <button
+        onClick={() => {
+          fetchNextPage();
+          return setPage(data.location.residents);
+        }}
+      >
         next
       </button>
 

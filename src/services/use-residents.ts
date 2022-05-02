@@ -3,29 +3,40 @@ import { useInfiniteQuery } from "react-query";
 import { QUERY_KEYS } from "constants/index";
 import { api } from "./api";
 import { queryClient } from "pages/_app";
+import { ILocationByIdResponse } from "./user-location-id";
+import { ICharacter } from "types/rick-morty-api";
 
-const fetchResidents = async (location: string) => {
+interface IResidents {
+  error: string;
+  residents: ICharacter[];
+}
+
+const initialData: IResidents = {
+  error: null,
+  residents: null,
+};
+
+const fetchResidents = async (residentsId: string[]): Promise<IResidents> => {
   try {
-    const { data } = await api.get("/character", {
-      params: {
-        location,
-      },
-    });
+    const { data } = await api.get(`/character/${residentsId}`);
 
-    return { ...initialData, ...data };
+    return { ...initialData, residents: data };
   } catch (error) {
-    return { ...initialData, error };
+    return { ...initialData, error: error?.message };
   }
 };
 
-export const useResidents = (location: string[]) => {
-  const locationData = queryClient.getQueryData(QUERY_KEYS.LOCATION);
-  const qtdPages = Math.ceil(location.length / 4);
+type IUseResidents = {
+  residentsId?: string[];
+  locationId?: number;
+};
 
-  return useInfiniteQuery([QUERY_KEYS.RESIDENTS, location], {
-    queryFn: () => fetchResidents(location),
-    enabled: !!locationData,
+export const useResidents = ({ locationId, residentsId }: IUseResidents) => {
+  return useInfiniteQuery([QUERY_KEYS.RESIDENTS, locationId], {
+    queryFn: () => fetchResidents(residentsId),
+    enabled: !!residentsId,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
+    getNextPageParam: () => residentsId,
   });
 };

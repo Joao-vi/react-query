@@ -81,7 +81,6 @@ export const Home = () => {
     setFilter({ page: 1 });
   }, [filter.gender, filter.status, debouncedName]);
 
-  console.log("data", data);
   return (
     <S.Content>
       <RickHead />

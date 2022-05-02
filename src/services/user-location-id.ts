@@ -4,7 +4,7 @@ import { api } from "./api";
 
 import { ILocation } from "types/rick-morty-api";
 
-interface ILocationByIdResponse {
+export interface ILocationByIdResponse {
   location: ILocation;
   error: string;
 }
