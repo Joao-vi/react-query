@@ -5,37 +5,25 @@ export interface ICharacter {
   species: string;
   type: string;
   gender: string;
-  origin: IOrigin;
-  location: ILocation;
+  origin: { name: string; url: string };
+  location: { name: string; url: string };
   image: string;
   episode: string[];
   url: string;
   created: Date;
 }
 
-export interface IData extends IResponse {
-  error?: string;
-}
-export interface IResponse {
+export interface ICharacterResponse {
   info?: IInfo;
   results?: ICharacter[];
+  error?: string;
 }
 
 interface IInfo {
-  count?: number;
-  pages?: number;
-  next?: string;
-  prev?: string;
-}
-
-interface IOrigin {
-  name: string;
-  url: string;
-}
-
-interface ILocation {
-  name: string;
-  url: string;
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
 }
 
 export interface IFilterCharacter {
@@ -44,10 +32,18 @@ export interface IFilterCharacter {
   gender?: "female" | "male" | "genderless" | "unknown";
 }
 
-/*
-  origin: IOrigin;
-  location: ILocation;
-  image: string;
-  episode: string[];
+export interface ILocation {
+  created: string;
+  dimension: string;
+  id: number;
+  name: string;
+  residents: string[];
+  type: string;
   url: string;
-*/
+}
+
+export interface ILocationResponse {
+  info: IInfo;
+  results: ILocation;
+  error: string;
+}

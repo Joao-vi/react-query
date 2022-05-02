@@ -4,9 +4,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.5rem;
 
-  height: 5rem;
+  gap: 0.5rem;
+  height: min-content;
 `;
 
 export const Label = styled.h2`

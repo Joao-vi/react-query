@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import * as S from "./styles";
 
 import { InPortal } from "components/layouts";
+
 import { TabNav } from "./components/tab-nav";
 import { InfoSection } from "./components/info-section";
 import { characterStore } from "store/character-store";
@@ -21,6 +22,7 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
     const backgroundColor = isOpen ? "#0000004a" : "transparent";
 
     const characterData = characterStore((state) => state.pickedCharacter);
+
     const setFavorite = characterStore((state) => state.setFavorites);
 
     useEffect(() => {
@@ -35,14 +37,14 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
               <>
                 <S.WrapperAvatar>
                   <S.Avatar
-                    src={characterData?.image}
-                    alt={CharacterModal?.name}
+                    src={characterData.image}
+                    alt={characterData.name}
                   />
                 </S.WrapperAvatar>
 
                 <S.Body>
                   <S.Header>
-                    <S.Name>{characterData?.name}</S.Name>
+                    <S.Name>{characterData.name}</S.Name>
 
                     <TabNav
                       currentIndex={currentIndex}
@@ -56,7 +58,10 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
                     </S.ContentContainer>
 
                     <S.ContentContainer>
-                      <LocationSection />
+                      <LocationSection
+                        name={characterData.location.name}
+                        url={characterData.location.url}
+                      />
                     </S.ContentContainer>
                   </TabContent>
                 </S.Body>

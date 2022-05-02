@@ -7,7 +7,7 @@ type IInfoSection = Omit<
 >;
 export const InfoSection = (props: IInfoSection) => {
   const { status, gender, location, origin, species, type, episode } = props;
-  console.log("Type:", type);
+
   return (
     <>
       <ContentCard label="Status" value={status} />

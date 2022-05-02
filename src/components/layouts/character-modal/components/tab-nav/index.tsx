@@ -24,7 +24,6 @@ const sections = [
 ];
 
 export const TabNav = ({ currentIndex, setCurrentIndex }: ITabNav) => {
-  console.log("cdas", currentIndex);
   return (
     <S.Wrapper>
       {sections.map(({ label, value }) => (

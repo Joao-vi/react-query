@@ -109,6 +109,7 @@ export const ContentContainer = styled.div<IContentContainer>`
     height: 100%;
 
     grid-template-columns: repeat(2, minmax(15.5rem, 20rem));
+    grid-template-rows: min-content;
     justify-content: center;
     gap: 1rem;
 

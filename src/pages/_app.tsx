@@ -7,7 +7,7 @@ import theme from "themes/theme";
 
 import { MaxWidth, NavBar, Footer } from "components/layouts";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   return (
