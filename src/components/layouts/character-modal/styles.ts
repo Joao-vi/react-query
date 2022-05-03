@@ -90,6 +90,38 @@ export const WrapperAvatar = styled.div`
   `}
 `;
 
+type TBookMark = {
+  isFav: boolean;
+};
+export const BookMark = styled.button<TBookMark>`
+  ${({ theme, isFav }) => css`
+    cursor: pointer;
+
+    position: absolute;
+    top: -2.6rem;
+    right: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 25px;
+
+    background-color: ${theme.colors.black600};
+    border-radius: 0.5rem;
+
+    > svg {
+      fill: ${isFav ? theme.colors.orange : theme.colors.white50};
+      transition: all 100ms ease;
+    }
+
+    ${theme.animations.hoverFocus()};
+  `}
+`;
+
 export const Name = styled.h1`
   text-align: center;
   font-size: 3rem;
@@ -100,6 +132,7 @@ export const Name = styled.h1`
 `;
 
 export const Header = styled.header`
+  position: relative;
   width: 100%;
 
   display: flex;

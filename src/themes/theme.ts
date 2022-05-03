@@ -1,13 +1,14 @@
 import { css } from "styled-components";
 
 const animations = {
-  hoverFocus: () => css`
+  hoverFocus: (hoverCss = "") => css`
     box-shadow: inset 0 0 0px 0px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
 
     transition: box-shadow 150ms ease-in-out;
 
     &:hover {
       box-shadow: inset 0 0 0px 2px #fbd38db0, 0px 0px 0px 0px #fbd38d36;
+      ${hoverCss};
     }
 
     &:focus-within {

@@ -7,6 +7,7 @@ import { characterStore } from "store/character-store";
 import { Overlay } from "components/layouts";
 
 import { TabNav, InfoSection, LocationSection, TabContent } from "./components";
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 
 interface ICharacterModal {
   isOpen: boolean;
@@ -16,6 +17,8 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
   (props, ref) => {
     const { isOpen } = props;
     const [currentIndex, setCurrentIndex] = React.useState(0);
+
+    const [isFav, toggleIsFav] = React.useReducer((state) => !state, false);
 
     const characterData = characterStore((state) => state.pickedCharacter);
 
@@ -37,6 +40,9 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
               <S.Body>
                 <S.Header>
                   <S.Name>{characterData.name}</S.Name>
+                  <S.BookMark onClick={toggleIsFav} isFav={isFav}>
+                    <BsBookmarkFill />
+                  </S.BookMark>
 
                   <TabNav
                     currentIndex={currentIndex}
