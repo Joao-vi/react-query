@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
 
     padding: 1rem;
     border-radius: 1rem;
+    border: 1px solid ${theme.colors.white50};
 
     box-shadow: ${theme.shadows.sm};
 

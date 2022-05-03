@@ -24,9 +24,9 @@ export const Wrapper = styled.div<IWrapper>`
 
     background-color: ${theme.colors.black500};
     border-radius: 1rem;
+    border: 1px solid ${theme.colors.white50};
 
     transition: all 300ms cubic-bezier(0.5, -1, 0.1, 1.5);
-
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10%);

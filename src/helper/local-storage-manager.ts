@@ -11,11 +11,11 @@ export const LocalStorageManager = () => {
 
   const clearStorage = () => localStorage.clear();
 
-  const getData = (key: string) => {
+  const getData = <T>(key: string, initialValue: T) => {
     if (typeof window !== "undefined") {
       const data = localStorage.getItem(`${APP_MAIN_KEY + key}`);
 
-      return !!data ? JSON.parse(data) : null;
+      return !!data ? JSON.parse(data) : initialValue;
     }
   };
 

@@ -6,15 +6,18 @@ import { LocalStorageManager } from "helper/local-storage-manager";
 import { ICharacter } from "types/rick-morty-api";
 
 interface ICharacterStore {
-  pickedCharacter: ICharacter | undefined;
+  pickedCharacter: ICharacter;
   favorites: number[];
   setFavorites: (id: number) => void;
   setPickedCharacter: (character: ICharacter) => void;
 }
 
 export const characterStore = create<ICharacterStore>((set) => ({
-  pickedCharacter: undefined,
-  favorites: LocalStorageManager().getData(STORAGE_KEYS.FAVORITES),
+  pickedCharacter: null,
+  favorites: LocalStorageManager().getData<number[]>(
+    STORAGE_KEYS.FAVORITES,
+    []
+  ),
   setFavorites: (id: number) =>
     set(({ favorites }) => {
       const { save } = LocalStorageManager();

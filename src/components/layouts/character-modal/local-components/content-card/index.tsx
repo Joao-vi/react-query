@@ -17,6 +17,7 @@ export const ContentCard = ({ label, value }: IContentCard) => {
         <ToolTip
           style={{ fontSize: "1.5rem" }}
           label={value}
+          placement="top"
           shouldActive={shouldFormat}
         />
         {fValue}

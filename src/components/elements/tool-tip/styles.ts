@@ -4,16 +4,16 @@ import { IToolTip } from ".";
 
 const placements = {
   bottom: (state: "show" | "hidden") => css`
-    top: ${state === "show" ? "100%" : "90%"};
+    top: ${state === "show" ? "110%" : "90%"};
   `,
   top: (state: "show" | "hidden") => css`
-    bottom: ${state === "show" ? "130%" : "90%"};
+    bottom: ${state === "show" ? "110%" : "90%"};
   `,
   right: (state: "show" | "hidden") => css`
-    left: ${state === "show" ? "130%" : "90%"};
+    left: ${state === "show" ? "110%" : "90%"};
   `,
   left: (state: "show" | "hidden") => css`
-    right: ${state === "show" ? "130%" : "90%"};
+    right: ${state === "show" ? "110%" : "90%"};
   `,
 };
 

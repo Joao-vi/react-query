@@ -4,7 +4,7 @@ import useMedia from "use-media";
 
 import * as S from "./styles";
 
-import { IFilterCharacter, IResponse } from "types/rick-morty-api";
+import { IFilterCharacter, ICharacterResponse } from "types/rick-morty-api";
 
 import { PageElement } from "components/elements";
 
@@ -15,7 +15,7 @@ type IPagination = {
     IFilterCharacter | ((state: IFilterCharacter) => IFilterCharacter)
   >;
   sibling: number;
-} & Omit<IResponse["info"], "next" | "prev">;
+} & Omit<ICharacterResponse["info"], "next" | "prev">;
 
 const mockedArray = [...Array.from(Array(10).keys())];
 
