@@ -15,7 +15,7 @@ type IPagination = {
     IFilterCharacter | ((state: IFilterCharacter) => IFilterCharacter)
   >;
   sibling: number;
-} & Omit<ICharacterResponse["info"], "next" | "prev">;
+} & Omit<ICharacterResponse["info"], "next" | "prev" | "count">;
 
 const mockedArray = [...Array.from(Array(10).keys())];
 

@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import { IData, IFilterCharacter } from "types/rick-morty-api";
+import { IFilterCharacter, ICharacterResponse } from "types/rick-morty-api";
 import { api } from "./api";
 
-const initialData: IData = {
+const initialData: ICharacterResponse = {
   error: null,
   info: null,
   results: null,
@@ -21,9 +21,9 @@ export const fecthCharacter = async (
       throw new Error("No results has found.");
     }
 
-    return { ...initialData, ...data } as IData;
+    return { ...initialData, ...data } as ICharacterResponse;
   } catch (error) {
-    return { ...initialData, error: name } as IData;
+    return { ...initialData, error: name } as ICharacterResponse;
   }
 };
 

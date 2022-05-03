@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { ToolTip, IToolTip } from ".";
+import { ToolTip } from ".";
 
 export default {
   title: "Elements/ToolTip",
@@ -19,5 +19,4 @@ export const Default: ComponentStory<typeof ToolTip> = (args) => (
 
 Default.args = {
   label: "Hey there",
-  children: "Hover me",
 };
