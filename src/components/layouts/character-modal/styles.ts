@@ -15,12 +15,12 @@ export const Wrapper = styled.div<IWrapper>`
     position: relative;
 
     max-width: 60rem;
-    max-height: 40rem;
+    max-height: 41rem;
 
     width: 100%;
     height: 100%;
 
-    padding: 4rem 1rem 1rem 1rem;
+    padding: 4rem 0rem 0rem 1rem;
 
     background-color: ${theme.colors.black500};
     border-radius: 1rem;
@@ -104,7 +104,7 @@ export const Header = styled.header`
 `;
 
 export const ContentContainer = styled.div<IContentContainer>`
-  ${({ isSelected = false }) => css`
+  ${({ theme, isSelected = false }) => css`
     width: 100%;
     height: 100%;
 
@@ -113,12 +113,36 @@ export const ContentContainer = styled.div<IContentContainer>`
     justify-content: center;
     gap: 1rem;
 
-    overflow: auto;
-    padding: 1rem 0rem;
+    overflow-y: auto;
+    padding: 1rem;
 
     opacity: 0;
     transform: translateY(-10%);
     display: none;
+
+    ::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    /* Track */
+    &:hover {
+      ::-webkit-scrollbar-track {
+        background: ${theme.colors.black900};
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: ${theme.colors.gray};
+
+        border-radius: 1rem;
+      }
+    }
 
     @keyframes showUpAnimation {
       100% {

@@ -11,3 +11,13 @@ export const SubSection = styled.h2`
     color: ${theme.colors.white200};
   `}
 `;
+
+export const ResidentsContainer = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 3;
+  justify-self: stretch;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;

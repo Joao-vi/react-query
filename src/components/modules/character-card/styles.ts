@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     cursor: pointer;
 
-    width: 43rem;
+    width: 100%;
+    max-width: 44rem;
     height: 16rem;
 
     display: flex;

@@ -6,7 +6,7 @@ interface IContentCard {
   label: string;
   value: string;
 }
-const maxValueSize = 15;
+const maxValueSize = 17;
 export const ContentCard = ({ label, value }: IContentCard) => {
   const shouldFormat = value?.length > maxValueSize;
   const fValue = shouldFormat ? value.slice(0, maxValueSize) + "..." : value;

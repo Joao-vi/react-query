@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import ReactDOM from "react-dom";
 
-interface IInPortal {
+export interface IInPortal {
   children: ReactNode;
   id: "character-portal";
 }

@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    height: 7rem;
+    height: min-content;
 
     display: flex;
     align-items: center;
     gap: 1rem;
 
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
 
     background-color: ${theme.colors.black600};
     border-radius: 1rem;
