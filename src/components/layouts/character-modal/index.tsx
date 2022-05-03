@@ -1,13 +1,18 @@
 import React from "react";
 
 import * as S from "./styles";
+import { BsBookmarkFill } from "react-icons/bs";
 
 import { characterStore } from "store/character-store";
 
 import { Overlay } from "components/layouts";
 
-import { TabNav, InfoSection, LocationSection, TabContent } from "./components";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import {
+  TabNav,
+  InfoSection,
+  LocationSection,
+  TabContent,
+} from "./local-components";
 
 interface ICharacterModal {
   isOpen: boolean;

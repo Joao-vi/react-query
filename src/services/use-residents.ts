@@ -1,9 +1,7 @@
 import { useInfiniteQuery } from "react-query";
+import { api } from "./api";
 
 import { QUERY_KEYS } from "constants/index";
-import { api } from "./api";
-import { queryClient } from "pages/_app";
-import { ILocationByIdResponse } from "./user-location-id";
 import { ICharacter } from "types/rick-morty-api";
 
 interface IResidents {

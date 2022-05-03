@@ -1,5 +1,6 @@
 import { ICharacter } from "types/rick-morty-api";
-import { ContentCard } from "../content-card/index";
+
+import { ContentCard } from "../";
 
 type IInfoSection = Omit<
   ICharacter,

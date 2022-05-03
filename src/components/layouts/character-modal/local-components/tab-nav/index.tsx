@@ -1,7 +1,7 @@
 import * as S from "./styles";
+import { Dispatch, SetStateAction } from "react";
 
 import { FilterElement } from "components/elements";
-import { Dispatch, SetStateAction, useState } from "react";
 
 interface ITabNav {
   currentIndex: number;
