@@ -3,7 +3,7 @@ import React from "react";
 import * as S from "./style";
 import { ContentCard, ResidentCard } from "../";
 
-import { useResidents, useLocationId } from "services";
+import { useCharacterByID, useLocationId } from "services";
 
 interface ILocationSection {
   name: string;
@@ -33,7 +33,7 @@ export const LocationSection = (props: ILocationSection) => {
     end: 4,
   });
 
-  const residentsId = React.useMemo(
+  const charactersID = React.useMemo(
     () => data?.location?.residents?.slice(page.start, page.end),
     [page, data]
   );
@@ -42,9 +42,10 @@ export const LocationSection = (props: ILocationSection) => {
     data: dataResidents,
     isLoading,
     fetchNextPage,
-  } = useResidents({
-    residentsId,
-    locationId: data?.location.id,
+  } = useCharacterByID({
+    queryKey: "RESIDENTS",
+    charactersID,
+    locationID: data?.location.id,
   });
 
   return (

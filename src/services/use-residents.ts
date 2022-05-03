@@ -16,9 +16,11 @@ const initialData: IResidents = {
   residents: null,
 };
 
-const fetchResidents = async (residentsId: string[]): Promise<IResidents> => {
+const fetchCharactersByID = async (
+  charactersID: string[]
+): Promise<IResidents> => {
   try {
-    const { data } = await api.get(`/character/${residentsId}`);
+    const { data } = await api.get(`/character/${charactersID}`);
 
     return { ...initialData, residents: data };
   } catch (error) {
@@ -26,17 +28,19 @@ const fetchResidents = async (residentsId: string[]): Promise<IResidents> => {
   }
 };
 
-type IUseResidents = {
-  residentsId?: string[];
-  locationId?: number;
+type IUseCharacterByID = {
+  queryKey: keyof typeof QUERY_KEYS;
+  charactersID?: string[];
+  locationID?: number;
 };
 
-export const useResidents = ({ locationId, residentsId }: IUseResidents) => {
-  return useInfiniteQuery([QUERY_KEYS.RESIDENTS, locationId], {
-    queryFn: () => fetchResidents(residentsId),
-    enabled: !!residentsId,
+export const useCharacterByID = (props: IUseCharacterByID) => {
+  const { queryKey, locationID, charactersID } = props;
+  return useInfiniteQuery([queryKey, locationID], {
+    queryFn: () => fetchCharactersByID(charactersID),
+    enabled: !!charactersID,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
-    getNextPageParam: () => residentsId,
+    getNextPageParam: () => charactersID,
   });
 };

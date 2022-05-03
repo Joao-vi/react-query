@@ -11,6 +11,7 @@ export const QUERY_KEYS = {
   LOCATION: "location",
   RESIDENTS: "resident",
   LOCATION_ID: "locationId",
+  FAVORITES: "favorites",
 };
 
 export const mockArray = [1, 1, 1, 1, 1, 1, 1, 1];
