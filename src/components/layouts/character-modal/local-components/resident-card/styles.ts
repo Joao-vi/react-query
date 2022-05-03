@@ -24,3 +24,20 @@ export const Avatar = styled.img`
 export const Name = styled.span`
   font-size: 1.7rem;
 `;
+
+export const Label = styled.h2`
+  ${({ theme }) => css`
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: ${theme.colors.gray};
+  `}
+`;
+
+export const Info = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;

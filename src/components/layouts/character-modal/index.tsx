@@ -23,8 +23,6 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
     const { isOpen } = props;
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
-    const [isFav, toggleIsFav] = React.useReducer((state) => !state, false);
-
     const characterData = characterStore((state) => state.pickedCharacter);
 
     const setFavorite = characterStore((state) => state.setFavorites);
@@ -34,7 +32,6 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
       setCurrentIndex(0);
     }, [isOpen, setCurrentIndex]);
 
-    console.log("Favorites", favorites);
     return (
       <Overlay portalId="character-portal" isOpen={isOpen}>
         <S.Wrapper ref={ref} isOpen={isOpen}>

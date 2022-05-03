@@ -11,14 +11,30 @@ interface ILocationSection {
 }
 
 type TCurrentPage = {
-  start: number;
-  end: number;
+  hasMore: boolean;
+  index: {
+    start: number;
+    end: number;
+  };
 };
 
 const handlePaginate = (state: TCurrentPage, residentsIds) => {
-  const qtdPages = Math.ceil(residentsIds.length / 4);
-  const hasPages = state.end <= qtdPages;
-  return hasPages ? { start: 4 + state.start, end: state.end + 4 } : state;
+  const qtdPages = residentsIds.length;
+  const hasMore = state.index.end < qtdPages;
+  return hasMore
+    ? {
+        hasMore,
+        index: {
+          start: state.index.start + 4,
+          end: state.index.end + 4,
+        },
+      }
+    : { ...state, hasMore };
+};
+
+const initialPage: TCurrentPage = {
+  hasMore: true,
+  index: { start: 0, end: 4 },
 };
 
 export const LocationSection = (props: ILocationSection) => {
@@ -28,19 +44,17 @@ export const LocationSection = (props: ILocationSection) => {
     url.replace("https://rickandmortyapi.com/api/location/", "")
   );
 
-  const [page, setPage] = React.useReducer(handlePaginate, {
-    start: 0,
-    end: 4,
-  });
+  const [page, setPage] = React.useReducer(handlePaginate, initialPage);
 
   const charactersID = React.useMemo(
-    () => data?.location?.residents?.slice(page.start, page.end),
+    () => data?.location?.residents?.slice(page.index.start, page.index.end),
     [page, data]
   );
 
   const {
     data: dataResidents,
     isLoading,
+    isFetchingNextPage,
     fetchNextPage,
   } = useCharacterByID({
     queryKey: "RESIDENTS",
@@ -64,12 +78,26 @@ export const LocationSection = (props: ILocationSection) => {
       {!isLoading && (
         <>
           <S.SubSection>Residents</S.SubSection>
+
           <S.ResidentsContainer>
             {dataResidents?.pages?.map(({ residents }) => {
               return residents?.map((resident) => (
                 <ResidentCard key={resident.id} {...resident} />
               ));
             })}
+            <S.LoadMore
+              onClick={() => {
+                fetchNextPage();
+                setPage(data.location.residents);
+              }}
+              style={{ display: page.hasMore ? "block" : "none" }}
+            >
+              {page.hasMore
+                ? isFetchingNextPage
+                  ? "..."
+                  : "Load More"
+                : "That's all!"}
+            </S.LoadMore>
           </S.ResidentsContainer>
         </>
       )}

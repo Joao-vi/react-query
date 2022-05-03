@@ -21,3 +21,18 @@ export const ResidentsContainer = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
 `;
+
+export const LoadMore = styled.button`
+  ${({ theme }) => css`
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    background-color: ${theme.colors.black900};
+
+    ${theme.animations.hoverFocus()};
+  `}
+`;

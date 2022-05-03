@@ -15,7 +15,7 @@ export const Wrapper = styled.div<IWrapper>`
     position: relative;
 
     max-width: 60rem;
-    max-height: 41rem;
+    max-height: 45rem;
 
     width: 100%;
     height: 100%;
@@ -170,10 +170,6 @@ export const ContentContainer = styled.div<IContentContainer>`
 
     /* Track */
     &:hover {
-      ::-webkit-scrollbar-track {
-        background: ${theme.colors.black900};
-      }
-
       /* Handle */
       ::-webkit-scrollbar-thumb {
         background: ${theme.colors.gray};

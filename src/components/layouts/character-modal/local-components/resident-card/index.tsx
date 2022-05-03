@@ -8,6 +8,10 @@ interface IResidentCard {
 export const ResidentCard = ({ image, name }: IResidentCard) => (
   <S.Wrapper>
     <S.Avatar src={image} alt={name} />
-    <S.Name>{name}</S.Name>
+
+    <S.Info>
+      <S.Label>Name:</S.Label>
+      <S.Name>{name}</S.Name>
+    </S.Info>
   </S.Wrapper>
 );
