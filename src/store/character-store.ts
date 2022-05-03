@@ -14,7 +14,7 @@ interface ICharacterStore {
 
 export const characterStore = create<ICharacterStore>((set) => ({
   pickedCharacter: undefined,
-  favorites: [],
+  favorites: LocalStorageManager().getData(STORAGE_KEYS.FAVORITES),
   setFavorites: (id: number) =>
     set(({ favorites }) => {
       const { save } = LocalStorageManager();

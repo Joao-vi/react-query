@@ -22,7 +22,9 @@ const fetchCharactersByID = async (
   try {
     const { data } = await api.get(`/character/${charactersID}`);
 
-    return { ...initialData, residents: data };
+    const residents = !!data?.length ? [...data] : [data];
+
+    return { ...initialData, residents };
   } catch (error) {
     return { ...initialData, error: error?.message };
   }

@@ -23,11 +23,13 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
     const characterData = characterStore((state) => state.pickedCharacter);
 
     const setFavorite = characterStore((state) => state.setFavorites);
+    const favorites = characterStore((state) => state.favorites);
 
     React.useEffect(() => {
       setCurrentIndex(0);
     }, [isOpen, setCurrentIndex]);
 
+    console.log("Favorites", favorites);
     return (
       <Overlay portalId="character-portal" isOpen={isOpen}>
         <S.Wrapper ref={ref} isOpen={isOpen}>
@@ -40,7 +42,10 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
               <S.Body>
                 <S.Header>
                   <S.Name>{characterData.name}</S.Name>
-                  <S.BookMark onClick={toggleIsFav} isFav={isFav}>
+                  <S.BookMark
+                    onClick={() => setFavorite(characterData.id)}
+                    isFav={favorites.includes(characterData.id)}
+                  >
                     <BsBookmarkFill />
                   </S.BookMark>
 

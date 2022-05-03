@@ -65,11 +65,11 @@ export const LocationSection = (props: ILocationSection) => {
         <>
           <S.SubSection>Residents</S.SubSection>
           <S.ResidentsContainer>
-            {dataResidents?.pages?.map(({ residents }) =>
-              residents.map((resident) => (
+            {dataResidents?.pages?.map(({ residents }) => {
+              return residents?.map((resident) => (
                 <ResidentCard key={resident.id} {...resident} />
-              ))
-            )}
+              ));
+            })}
           </S.ResidentsContainer>
         </>
       )}
