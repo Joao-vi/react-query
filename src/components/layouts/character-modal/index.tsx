@@ -3,7 +3,7 @@ import React from "react";
 import * as S from "./styles";
 import { BsBookmarkFill } from "react-icons/bs";
 
-import { characterStore } from "store/character-store";
+import { useModalStore } from "store/use-modal-store";
 
 import { Overlay } from "components/layouts";
 
@@ -13,6 +13,7 @@ import {
   LocationSection,
   TabContent,
 } from "./local-components";
+import { useFavoriteStore } from "store/use-favorite-store";
 
 interface ICharacterModal {
   isOpen: boolean;
@@ -23,30 +24,31 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
     const { isOpen } = props;
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
-    const characterData = characterStore((state) => state.pickedCharacter);
+    const character = useModalStore((state) => state.selected);
 
-    const setFavorite = characterStore((state) => state.setFavorites);
-    const favorites = characterStore((state) => state.favorites);
+    const setFavorite = useFavoriteStore((state) => state.setFavorite);
+    const favorites = useFavoriteStore((state) => state.favorites);
 
     React.useEffect(() => {
       setCurrentIndex(0);
-    }, [isOpen, setCurrentIndex]);
+    }, [isOpen]);
 
     return (
       <Overlay portalId="character-portal" isOpen={isOpen}>
         <S.Wrapper ref={ref} isOpen={isOpen}>
-          {characterData && (
+          {character && (
             <>
               <S.WrapperAvatar>
-                <S.Avatar src={characterData.image} alt={characterData.name} />
+                <S.Avatar src={character.image} alt={character.name} />
               </S.WrapperAvatar>
 
               <S.Body>
                 <S.Header>
-                  <S.Name>{characterData.name}</S.Name>
+                  <S.Name>{character.name}</S.Name>
                   <S.BookMark
-                    onClick={() => setFavorite(characterData.id)}
-                    isFav={favorites.includes(characterData.id)}
+                    aria-label="Save as favorite."
+                    onClick={() => setFavorite(character.id)}
+                    isFav={favorites.includes(character.id)}
                   >
                     <BsBookmarkFill />
                   </S.BookMark>
@@ -59,13 +61,13 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
 
                 <TabContent currentIndex={currentIndex}>
                   <S.ContentContainer>
-                    <InfoSection {...characterData} />
+                    <InfoSection {...character} />
                   </S.ContentContainer>
 
                   <S.ContentContainer>
                     <LocationSection
-                      name={characterData.location.name}
-                      url={characterData.location.url}
+                      name={character.location.name}
+                      url={character.location.url}
                     />
                   </S.ContentContainer>
                 </TabContent>

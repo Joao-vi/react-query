@@ -12,7 +12,7 @@ import { RickHead, Input } from "components/elements";
 import { CharacterModal, Pagination } from "components/layouts";
 import { CharacterCard, FilterCharacter } from "components/modules";
 import { CharacterCardLoading } from "components/shimmer";
-import { characterStore } from "store/character-store";
+import { useModalStore } from "store/use-modal-store";
 
 const filterReducer = (
   state: IFilterCharacter,
@@ -40,9 +40,7 @@ export const Home = () => {
   // Hooks
   const modalCharacter = useDisclosure();
 
-  const setPickedCharacter = characterStore(
-    (state) => state.setPickedCharacter
-  );
+  const setModalCharacter = useModalStore((state) => state.setSelected);
 
   React.useEffect(() => {
     setFilter({ page: 1 });
@@ -87,7 +85,7 @@ export const Home = () => {
               {data?.results?.map((character, index) => (
                 <CharacterCard
                   onClick={() => {
-                    setPickedCharacter(character);
+                    setModalCharacter(character);
                     modalCharacter.open();
                   }}
                   delay={index}

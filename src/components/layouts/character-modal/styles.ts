@@ -105,6 +105,8 @@ export const BookMark = styled.button<TBookMark>`
     align-items: center;
     justify-content: center;
 
+    border: 1px solid ${theme.colors.white50};
+
     width: 40px;
     height: 40px;
 
@@ -114,6 +116,7 @@ export const BookMark = styled.button<TBookMark>`
     border-radius: 0.5rem;
 
     > svg {
+      font-size: 2.2rem;
       fill: ${isFav ? theme.colors.orange : theme.colors.white50};
       transition: all 100ms ease;
     }

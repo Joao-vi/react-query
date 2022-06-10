@@ -17,8 +17,6 @@ type IPagination = {
   sibling: number;
 } & Omit<ICharacterResponse["info"], "next" | "prev" | "count">;
 
-const mockedArray = [...Array.from(Array(10).keys())];
-
 export const Pagination = (props: IPagination) => {
   const { pages, current, sibling, setFilter, isLoading } = props;
 
