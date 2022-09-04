@@ -45,14 +45,6 @@ export const CharacterModal = React.forwardRef<HTMLDivElement, ICharacterModal>(
               <S.Body>
                 <S.Header>
                   <S.Name>{character.name}</S.Name>
-                  <S.BookMark
-                    aria-label="Save as favorite."
-                    onClick={() => setFavorite(character.id)}
-                    isFav={favorites.includes(character.id)}
-                  >
-                    <BsBookmarkFill />
-                  </S.BookMark>
-
                   <TabNav
                     currentIndex={currentIndex}
                     setCurrentIndex={setCurrentIndex}

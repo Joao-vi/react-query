@@ -17,10 +17,6 @@ const sections = [
     label: "Location",
     value: 1,
   },
-  {
-    label: "Episodeos",
-    value: 2,
-  },
 ];
 
 export const TabNav = ({ currentIndex, setCurrentIndex }: ITabNav) => {
